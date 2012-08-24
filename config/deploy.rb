@@ -22,7 +22,7 @@ set :use_sudo, false
 # repo details
 set :scm, :git
 set :scm_username, "fvcdaniel"
-set :repository, "git://github.com/fvcdaniel/meu-imovel-pb.git"
+set :repository, "git://github.com/fvcdaniel/educar.git"
 set :branch, "master"
 set :git_enable_submodules, 1
 
