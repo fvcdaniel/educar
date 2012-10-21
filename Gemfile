@@ -9,20 +9,29 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'cancan'
 gem 'rolify'
+gem 'carrierwave'
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
 group :development do
+end
 
+group :development, :test do
   gem 'sqlite3'
-    
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork', '1.2.0'
+  gem 'spork', '0.9.2'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'rb-fsevent', :require => false
+  gem 'growl', '1.0.3'
 end
 
 group :production do
-  
   gem 'pg'
-  
 end
-
-
 
 # Gems used only for assets and not required
 # in production environments by default.
