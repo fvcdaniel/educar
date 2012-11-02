@@ -66,4 +66,10 @@ Educar::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   config.assets.initialize_on_precompile = true
+
+  # For a full list of configurable options, see the gem's GitHub home page.
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Educar] ",
+    :sender_address => %{ "Projeto Educar" <contato@meuimovelpb.com> },
+    :exception_recipients => %w{ fvcdaniel@gmail.com }
 end
