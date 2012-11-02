@@ -49,7 +49,7 @@ end
 
 after 'deploy:update_code', 'deploy:symlink_shared'
 
-after :deploy, "deploy:migrate"
+#after :deploy, "deploy:migrate"
 after :deploy, 'deploy:database'
 namespace :deploy do
     task :database, :roles => :app do
