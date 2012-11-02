@@ -1,4 +1,6 @@
 Educar::Application.routes.draw do
+  resources :assuntos
+
   resources :materias
 
   devise_for :users

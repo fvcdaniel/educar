@@ -16,5 +16,6 @@ describe "materias/new" do
       assert_select "input#materia_nome", :name => "materia[nome]"
       assert_select "input#materia_imagem", :name => "materia[imagem]"
     end
+    assert_select "h1", text: 'Nova Materia'
   end
 end

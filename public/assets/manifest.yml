@@ -1,7 +1,9 @@
 ---
+delete.png: delete-f923c56f60ad2e00dcb267d8ba25cb4f.png
+edit.png: edit-836a99060c9c6fce76d5e9a1f1296b3e.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
-application.js: application-c0333ef344c8c2c355efc38914271589.js
-application.css: application-d20c55351ca140e911c7754fb88fed09.css
+application.js: application-ac47193db837bb5e846f6e57838993f7.js
+application.css: application-837357e97d43e711a4baa791dfadfc15.css
 fontawesome-webfont.eot: fontawesome-webfont-7cf1b0de49e2f8672c9ad6d9e382115f.eot
 fontawesome-webfont.svg: fontawesome-webfont-4d19fdd70a080778557b652cb4868557.svg
 fontawesome-webfont.ttf: fontawesome-webfont-1e29be0bb354c9f664cbca7df9a966d8.ttf

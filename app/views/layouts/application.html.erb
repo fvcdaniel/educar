@@ -22,27 +22,36 @@
 
 	<div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <%= render 'layouts/materias' %>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <div class="yeld-unit">
-          	<%= bootstrap_flash %>
-	        <%= yield %>
+        <% unless params[:controller].to_s.include? 'devise'%>
+          <div class="span3">
+            <div class="well sidebar-nav">
+              <%= render 'layouts/materias' %>
+            </div><!--/.well -->
+          </div><!--/span-->
+          <div class="span9">
+            <div class="yeld-unit">
+              <%= bootstrap_flash %>
+              <%= yield %>
+            </div>
+          </div><!--/span-->
+        <% else %>
+          <div class="span12">
+            <div class="span6 offset3" style="margin-bottom: 20 px">
+              <%= bootstrap_flash %>
+              <%= yield %>
+            </div>
           </div>
-        </div><!--/span-->
+        <% end %>
+        
       </div><!--/row-->
 
       <hr>
-
+      <%= debug(params) if Rails.env.development? %>
       <footer>
         <p>&copy; Company 2012</p>
       </footer>
 
     </div>
-
 
     <!-- Javascripts
     ================================================== -->

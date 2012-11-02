@@ -20,26 +20,40 @@ require 'spec_helper'
 
 describe MateriasController do
 
+  login_admin
+
   # This should return the minimal set of attributes required to create a valid
   # Materia. As you add validations to Materia, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:nome => 'Portugues'}
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # MateriasController. Be sure to keep this updated too.
   def valid_session
-    {}
+    
+  end
+
+  describe "Materias" do
+    describe "GET /materias" do
+      it "works! (now write some real specs)" do
+        # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+        #get materias_path
+        response.status.should be(200)
+      end
+    end
   end
 
   describe "GET index" do
+
     it "assigns all materias as @materias" do
       materia = Materia.create! valid_attributes
       get :index, {}, valid_session
       assigns(:materias).should eq([materia])
     end
+
   end
 
   describe "GET show" do

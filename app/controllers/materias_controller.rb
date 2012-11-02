@@ -1,4 +1,8 @@
 class MateriasController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
+  
   # GET /materias
   # GET /materias.json
   def index
@@ -44,7 +48,7 @@ class MateriasController < ApplicationController
 
     respond_to do |format|
       if @materia.save
-        format.html { redirect_to @materia, notice: 'Materia was successfully created.' }
+        format.html { redirect_to @materia, notice: 'Materia criado com sucesso.' }
         format.json { render json: @materia, status: :created, location: @materia }
       else
         format.html { render action: "new" }
@@ -60,7 +64,7 @@ class MateriasController < ApplicationController
 
     respond_to do |format|
       if @materia.update_attributes(params[:materia])
-        format.html { redirect_to @materia, notice: 'Materia was successfully updated.' }
+        format.html { redirect_to @materia, notice: 'Materia atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

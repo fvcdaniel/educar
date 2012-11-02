@@ -1,0 +1,12 @@
+<%= simple_form_for @assunto, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :nome %>
+  <%= f.association :materia, :collection => Materia.all(:order => 'nome') %>
+  <%= f.association :assunto, :collection => Assunto.all(:order => 'nome') %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                assuntos_path, :class => 'btn' %>
+  </div>
+  
+<% end %>
