@@ -10,7 +10,7 @@ gem 'twitter-bootstrap-rails'
 gem 'cancan'
 gem 'rolify'
 gem 'carrierwave'
-gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+gem 'simple_form'
 
 group :development do
 end
