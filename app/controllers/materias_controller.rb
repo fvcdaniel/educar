@@ -6,6 +6,7 @@ class MateriasController < ApplicationController
   # GET /materias
   # GET /materias.json
   def index
+    a = 1 + "1"
     @materias = Materia.all
 
     respond_to do |format|

@@ -11,6 +11,7 @@ gem 'cancan'
 gem 'rolify'
 gem 'carrierwave'
 gem 'simple_form'
+gem 'exception_notification'
 
 group :development do
 end
@@ -32,7 +33,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'exception_notification'
 end
 
 # Gems used only for assets and not required
@@ -62,4 +62,4 @@ gem 'jquery-rails'
  # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
