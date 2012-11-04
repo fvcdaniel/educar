@@ -54,6 +54,6 @@ after :deploy, 'deploy:database'
 namespace :deploy do
     task :database, :roles => :app do
         run "cp #{deploy_to}/shared/database.yml #{current_path}/config/"
-        run "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake db:reset"
+        run "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake db:migrate"
     end
 end
