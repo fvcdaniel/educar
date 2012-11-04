@@ -4,6 +4,6 @@
       :domain               => "meuimovelpb.com",  
       :user_name            => "daniel",  
       #:password             => "secret",  
-      :authentication       => "none"
+      :authentication       => nil
       #:enable_starttls_auto => true  
     }
