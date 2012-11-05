@@ -48,7 +48,7 @@ class MateriasController < ApplicationController
 
     respond_to do |format|
       if @materia.save
-        format.html { redirect_to @materia, notice: 'Materia criado com sucesso.' }
+        format.html { redirect_to @materia, notice: 'Materia criada com sucesso.' }
         format.json { render json: @materia, status: :created, location: @materia }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class MateriasController < ApplicationController
 
     respond_to do |format|
       if @materia.update_attributes(params[:materia])
-        format.html { redirect_to @materia, notice: 'Materia atualizado com sucesso.' }
+        format.html { redirect_to @materia, notice: 'Materia atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

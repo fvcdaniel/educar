@@ -22,12 +22,20 @@ describe "All" do
     it { should have_selector('h1', :text => "Materias")}
   end
 
-  describe "teste de link assunto na pagina inicial" do
+  describe "teste de link assuntos na pagina inicial" do
     before do
       click_link "Gerenciar"
       click_link "Assuntos"
     end
     it { should have_selector('h1', :text => "Assuntos")}
+  end
+
+  describe "teste de link concursos na pagina inicial" do
+    before do
+      click_link "Gerenciar"
+      click_link "Concursos"
+    end
+    it { should have_selector('h1', :text => "Concursos")}
   end
 
 end

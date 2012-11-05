@@ -1,0 +1,41 @@
+<%- model_class = Concurso -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:ano) %></th>
+      <th><%= model_class.human_attribute_name(:cargo) %></th>
+      <th><%= model_class.human_attribute_name(:edital) %></th>
+      <th><%= model_class.human_attribute_name(:gabarito) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @concursos.each do |concurso| %>
+      <tr>
+        <td><%= link_to concurso.id, concurso_path(concurso) %></td>
+        <td><%= concurso.nome %></td>
+        <td><%= concurso.ano %></td>
+        <td><%= concurso.cargo %></td>
+        <td><%= concurso.edital %></td>
+        <td><%= concurso.gabarito %></td>
+        <td>
+          <%= link_to image_tag('edit.png'), edit_concurso_path(concurso), :class => 'quick-edit',
+                  :title => 'editar' %>
+          <%= link_to image_tag('delete.png'), concurso_path(concurso), :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", 
+                      :default => 'Você tem certeza?')) },
+                      :class => '', :title => 'deletar' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_concurso_path,
+            :class => 'btn' %>

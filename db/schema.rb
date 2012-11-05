@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028181516) do
+ActiveRecord::Schema.define(:version => 20121104211233) do
 
   create_table "assuntos", :force => true do |t|
     t.string   "nome"
@@ -24,11 +24,14 @@ ActiveRecord::Schema.define(:version => 20121028181516) do
   add_index "assuntos", ["assunto_id"], :name => "index_assuntos_on_assunto_id"
   add_index "assuntos", ["materia_id"], :name => "index_assuntos_on_materia_id"
 
-  create_table "materia", :force => true do |t|
-    t.string   "titulo"
+  create_table "concursos", :force => true do |t|
+    t.string   "nome"
+    t.integer  "ano"
+    t.string   "cargo"
+    t.string   "edital"
+    t.string   "gabarito"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "imagem"
   end
 
   create_table "materias", :force => true do |t|
@@ -37,6 +40,19 @@ ActiveRecord::Schema.define(:version => 20121028181516) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "questoes", :force => true do |t|
+    t.integer  "materia_id"
+    t.integer  "concurso_id"
+    t.integer  "assunto_id"
+    t.text     "texto"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "questoes", ["assunto_id"], :name => "index_questoes_on_assunto_id"
+  add_index "questoes", ["concurso_id"], :name => "index_questoes_on_concurso_id"
+  add_index "questoes", ["materia_id"], :name => "index_questoes_on_materia_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

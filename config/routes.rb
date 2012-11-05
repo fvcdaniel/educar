@@ -1,4 +1,8 @@
 Educar::Application.routes.draw do
+  resources :questoes
+
+  resources :concursos
+
   resources :assuntos
 
   resources :materias

@@ -1,0 +1,29 @@
+<%- model_class = Concurso -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+  <dd><%= @concurso.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ano) %>:</strong></dt>
+  <dd><%= @concurso.ano %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cargo) %>:</strong></dt>
+  <dd><%= @concurso.cargo %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:edital) %>:</strong></dt>
+  <dd><%= @concurso.edital %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:gabarito) %>:</strong></dt>
+  <dd><%= @concurso.gabarito %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              concursos_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_concurso_path(@concurso), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              concurso_path(@concurso),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) },
+              :class => 'btn' %>
+</div>

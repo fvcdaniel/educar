@@ -213,5 +213,12 @@ pt-BR:
     errors:
       <<: *errors
   activerecord:
+    models:
+      questao:
+        one: 'Questão'
+        other: 'Questões'
+    attributes:
+      questao:
+        materia: 'Matéria'
     errors:
       <<: *errors
