@@ -8,6 +8,9 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:materia_id) %></th>
       <th><%= model_class.human_attribute_name(:concurso_id) %></th>
+      <th><%= model_class.human_attribute_name(:assunto_id) %></th>
+      <th><%= model_class.human_attribute_name(:tipo) %></th>
+      <th><%= model_class.human_attribute_name(:gabarito) %></th>
       <th><%= model_class.human_attribute_name(:texto) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -16,17 +19,29 @@
     <% @questoes.each do |questao| %>
       <tr>
         <td><%= link_to questao.id, questao_path(questao) %></td>
-        <td><%= questao.materia_id %></td>
-        <td><%= questao.concurso_id %></td>
-        <td><%= questao.texto %></td>
+        <td><%= questao.materia.nome %></td>
+        <td><%= questao.concurso.nome %></td>
+        <td><%= questao.assunto.nome %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_questao_path(questao), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      questao_path(questao),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <abbr title="<%= escape_javascript(get_tipo questao.tipo) %>">
+            <%= questao.tipo %>
+          </abbr>
+        </td>
+        <td><%= questao.gabarito %></td>
+        <td>
+          <abbr title="<%= escape_javascript(questao.texto.strip) %>">
+              <%= questao.texto.first(16).strip + '...' %> 
+          </abbr> 
+        </td>
+        <td>
+          <%= link_to new_item_path(:questao => questao.id), :class => "icon-item", :title => "adicionar item" do %>
+            <i class="icon-plus"></i>
+          <% end %>
+          <%= link_to image_tag('edit.png'), edit_questao_path(questao), :class => 'quick-edit',:title => 'editar' %>
+          <%= link_to image_tag('delete.png'), questao_path(questao), :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", 
+                      :default => 'Você tem certeza?')) },
+                      :class => '', :title => 'deletar' %>
         </td>
       </tr>
     <% end %>

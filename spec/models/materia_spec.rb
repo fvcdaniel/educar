@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: materias
+#
+#  id         :integer          not null, primary key
+#  nome       :string(255)
+#  imagem     :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Materia do

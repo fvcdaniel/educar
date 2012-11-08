@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104211233) do
+ActiveRecord::Schema.define(:version => 20121107215919) do
 
   create_table "assuntos", :force => true do |t|
     t.string   "nome"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(:version => 20121104211233) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "itens", :force => true do |t|
+    t.text     "desc"
+    t.integer  "questao_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "itens", ["questao_id"], :name => "index_itens_on_questao_id"
+
   create_table "materias", :force => true do |t|
     t.string   "nome"
     t.string   "imagem"
@@ -46,8 +55,10 @@ ActiveRecord::Schema.define(:version => 20121104211233) do
     t.integer  "concurso_id"
     t.integer  "assunto_id"
     t.text     "texto"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "gabarito"
+    t.string   "tipo",        :default => "M"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "questoes", ["assunto_id"], :name => "index_questoes_on_assunto_id"

@@ -1,5 +1,8 @@
 #encoding=utf-8
 class QuestoesController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   # GET /questoes
   # GET /questoes.json
   def index

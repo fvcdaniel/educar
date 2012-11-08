@@ -5,11 +5,20 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:materia_id) %>:</strong></dt>
-  <dd><%= @questao.materia_id %></dd>
+  <dd><%= @questao.materia.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:concurso_id) %>:</strong></dt>
-  <dd><%= @questao.concurso_id %></dd>
+  <dd><%= @questao.concurso.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:assunto_id) %>:</strong></dt>
+  <dd><%= @questao.assunto.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:texto) %>:</strong></dt>
   <dd><%= @questao.texto %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <% @questao.itens.each.with_index do |item, index| %>
+    <dt><strong>Item <%= index+1 %>:</strong></dt>
+    <dd><%= (link_to item.desc, item_path(item)) %></dd>
+  <% end %>
 </dl>
 
 <div class="form-actions">
@@ -21,5 +30,5 @@
               questao_path(@questao),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+              :class => 'btn' %>
 </div>

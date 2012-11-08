@@ -1,3 +1,4 @@
+#encoding=utf-8
 require 'spec_helper'
 
 describe "All" do
@@ -36,6 +37,14 @@ describe "All" do
       click_link "Concursos"
     end
     it { should have_selector('h1', :text => "Concursos")}
+  end
+
+  describe "teste de link Questoes na pagina inicial" do
+    before do
+      click_link "Gerenciar"
+      click_link "Questões"
+    end
+    it { should have_selector('h1', :text => "Questões")}
   end
 
 end

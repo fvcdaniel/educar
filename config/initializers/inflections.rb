@@ -17,4 +17,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'materia', 'materias'
   inflect.irregular 'questao', 'questoes'
+  inflect.irregular 'item', 'itens'
 end

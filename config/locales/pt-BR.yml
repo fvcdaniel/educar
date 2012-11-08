@@ -217,8 +217,12 @@ pt-BR:
       questao:
         one: 'Questão'
         other: 'Questões'
+      item: 'Item'
     attributes:
       questao:
         materia: 'Matéria'
+      item:
+        desc: 'Descrição'
+        questao: 'Questão'
     errors:
       <<: *errors

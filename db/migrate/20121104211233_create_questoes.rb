@@ -5,6 +5,8 @@ class CreateQuestoes < ActiveRecord::Migration
       t.belongs_to :concurso
       t.belongs_to :assunto
       t.text :texto
+      t.string :gabarito, :size => 2
+      t.string :tipo, :size => 2, :default => 'M' # multipla escolha
 
       t.timestamps
     end

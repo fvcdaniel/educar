@@ -22,6 +22,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
+  gem 'annotate'
 end
 
 group :test do

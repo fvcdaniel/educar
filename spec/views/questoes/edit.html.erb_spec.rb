@@ -14,8 +14,9 @@ describe "questoes/edit" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => questoes_path(@questao), :method => "post" do
-      assert_select "input#questao_materia", :name => "questao[materia]"
-      assert_select "input#questao_concurso", :name => "questao[concurso]"
+      assert_select "select#questao_materia_id", :name => "questao[materia]"
+      assert_select "select#questao_concurso_id", :name => "questao[concurso]"
+      assert_select "select#questao_assunto_id", :name => "questao[concurso]"
       assert_select "textarea#questao_texto", :name => "questao[texto]"
     end
   end
