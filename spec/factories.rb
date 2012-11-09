@@ -12,7 +12,7 @@ FactoryGirl.define do
 
   factory :assunto do
   	nome	"Crase"
-    association :materia, factory: :materia, nome: "verbos"
+    association :materia, factory: :materia, nome: "logica"
   end
 
   factory :materia do
@@ -31,11 +31,17 @@ FactoryGirl.define do
     cargo "cargo"
   end
 
+  factory :concurso2, class: Concurso do
+    nome  "concurso2"
+    ano   "ano2"
+    cargo "cargo2"
+  end
+
   factory :questao do
     texto "Texto da questao"
     association "materia"
     association "concurso"
     association "assunto" 
-  end  
+  end
 
 end

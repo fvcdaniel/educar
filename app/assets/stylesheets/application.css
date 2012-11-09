@@ -17,9 +17,31 @@
     border-radius: 6px 6px 6px 6px;
     margin-bottom: 30px;
     padding: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
 }
 .dl-horizontal > dd:after {
   display: table;
   content: "";
   clear: both;
 }
+.assunto  {
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 15px 15px 15px 15px;
+  display: inline-block;
+  padding: 5px 14px;
+  text-decoration: none;
+  &:hover {
+      text-decoration: none;
+      background-color: blue;
+  }
+}
+.tree{
+  list-style-type: none;
+}
+.concurso{
+	margin: 0 0 10px 25px;
+}
+
+
+

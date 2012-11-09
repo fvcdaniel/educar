@@ -17,6 +17,8 @@ class Concurso < ActiveRecord::Base
 
   validates_presence_of :nome, :ano, :cargo
 
+  has_many :questoes
+
   def name
   	self.nome
   end

@@ -56,7 +56,7 @@ describe "Questoes" do
 			describe 'validacao 3' do
 				before do
 				select 'concurso', from: 'Concurso'
-				select 'verbos', from: 'Matéria'
+				select 'logica', from: 'Matéria'
 				click_button 'Criar Questão'
 			end
 				it {should have_selector('span', :text => 'não pode ficar em branco')}
@@ -65,7 +65,7 @@ describe "Questoes" do
 			describe 'validacao 4' do
 				before do
 					select 'concurso', from: 'Concurso'
-					select 'verbos', from: 'Matéria'
+					select 'logica', from: 'Matéria'
 					select 'Crase', from: 'Assunto'
 					click_button 'Criar Questão'
 				end
@@ -75,7 +75,7 @@ describe "Questoes" do
 			describe 'validacao 5' do
 				before do
 					select 'concurso', from: 'Concurso'
-					select 'verbos', from: 'Matéria'
+					select 'logica', from: 'Matéria'
 					select 'Crase', from: 'Assunto'
 					fill_in 'Texto', with: 'Quem nasceu primeiro o ovo ou a galinha?'
 					click_button 'Criar Questão'

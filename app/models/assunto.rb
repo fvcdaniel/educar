@@ -14,6 +14,7 @@ class Assunto < ActiveRecord::Base
   attr_accessible :nome, :materia_id, :assunto_id
   belongs_to :materia
   belongs_to :assunto
+  has_many :assuntos
 
   validates_presence_of :nome
   validates_presence_of :materia

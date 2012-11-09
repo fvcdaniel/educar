@@ -1,0 +1,13 @@
+<a class="assunto" href='#'> 
+	<%= assunto.nome.upcase %>
+</a>
+    
+<ul>    
+	<% unless assunto.assuntos.blank? %>
+		<% assunto.assuntos.each do |assunto| %>
+			<li class="tree">
+	    		<%= render :partial => 'assuntos', :locals => { :assunto => assunto } %>
+	    	</li>
+	    <% end %>
+	<% end %>
+</ul>
