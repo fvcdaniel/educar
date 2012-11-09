@@ -45,6 +45,7 @@ class QuestoesController < ApplicationController
   # POST /questoes.json
   def create
     @questao = Questao.new(params[:questao])
+    @questao.user = current_user
 
     respond_to do |format|
       if @questao.save

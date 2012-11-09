@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "itens/index" do
   
   before(:each) do
-    questao = FactoryGirl.create(:questao)
+    questao = FactoryGirl.create(:questao2)
     assign(:itens, [
       stub_model(Item,
         :desc => "MyText",

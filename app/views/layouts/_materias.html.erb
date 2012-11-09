@@ -1,7 +1,7 @@
 <ul class="nav nav-list">
   <li class="nav-header">Materias</li>
   <% @materias.each do |m|%>
-  	<li>
+  	<li class="<%= materia_active m.id%>">
   		<%= link_to m.nome, root_path(:materia_id => m.id)%>
   	</li>
   <% end %>

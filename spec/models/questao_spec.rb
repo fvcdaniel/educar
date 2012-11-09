@@ -16,5 +16,27 @@
 require 'spec_helper'
 
 describe Questao do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  before { 
+  	@questao = FactoryGirl.create(:questao2)
+  }
+  subject { @questao }
+
+  it {should respond_to(:materia)}
+  it {should respond_to(:concurso)}
+  it {should respond_to(:assunto)}
+  it {should respond_to(:texto)}
+  it {should respond_to(:gabarito)}
+  it {should respond_to(:tipo)}
+  it {should respond_to(:user)}
+  
+  describe 'when name is present' do
+  	it {should be_valid}
+  end
+
+  describe 'when name is not present' do
+  	before {@questao.materia = nil}
+  	it {should_not be_valid}
+  end
+
 end

@@ -44,4 +44,12 @@ FactoryGirl.define do
     association "assunto" 
   end
 
+  factory :questao2, class: Questao do
+    texto "Texto da questao"
+    association "materia"
+    association "concurso"
+    association "assunto" 
+    association "user"
+  end
+
 end

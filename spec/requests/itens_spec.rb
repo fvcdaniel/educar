@@ -34,7 +34,7 @@ describe "Itens" do
 		describe "validacao das questões" do
 
 			before do
-				FactoryGirl.create(:questao)
+				FactoryGirl.create(:questao, user: user)
 				visit new_item_path
 			end
 

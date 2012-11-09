@@ -17,7 +17,7 @@ class Concurso < ActiveRecord::Base
 
   validates_presence_of :nome, :ano, :cargo
 
-  has_many :questoes
+  has_many :questoes, :dependent => :destroy
 
   def name
   	self.nome

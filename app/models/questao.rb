@@ -17,11 +17,12 @@ class Questao < ActiveRecord::Base
   belongs_to :materia
   belongs_to :concurso
   belongs_to :assunto
-  has_many :itens
+  belongs_to :user
+  has_many :itens, :dependent => :destroy
   
-  attr_accessible :texto, :materia_id, :concurso_id, :assunto_id, :gabarito, :tipo
+  attr_accessible :texto, :materia_id, :concurso_id, :assunto_id, :gabarito, :tipo, :user_id
 
-  validates_presence_of :texto, :materia, :concurso, :assunto
+  validates_presence_of :texto, :materia, :concurso, :assunto, :user
 
   def name
   	self.id.to_s + ' - ' + self.assunto.name

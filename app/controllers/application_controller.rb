@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   private
   def set_var
-    @materias ||= Materia.all
+    @materias ||= Materia.all(:order => :nome)
     @assuntos = Assunto.all
   end
 

@@ -15,6 +15,9 @@ class Materia < ActiveRecord::Base
   validates_presence_of :nome
   validates_uniqueness_of :nome
 
+  has_many :assuntos, :dependent => :destroy
+  has_many :questoes, :dependent => :destroy
+
   def name
   	self.nome
   end

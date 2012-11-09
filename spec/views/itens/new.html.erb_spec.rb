@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "itens/new" do
   before(:each) do
-    questao = FactoryGirl.create(:questao)
+    questao = FactoryGirl.create(:questao2)
     assign(:item, stub_model(Item,
       :desc => "MyText",
       :questao => questao

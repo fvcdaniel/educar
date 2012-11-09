@@ -8,7 +8,8 @@ describe "Home" do
 		mat2 = FactoryGirl.create(:materia2)
 		assunto = FactoryGirl.create(:assunto, materia: mat)
 		concurso = FactoryGirl.create(:concurso2)
-		questao = FactoryGirl.create(:questao, materia: mat, assunto: assunto)
+		user = FactoryGirl.create(:user)
+		questao = FactoryGirl.create(:questao, materia: mat, assunto: assunto, user: user)
 
 		visit root_path
 	end
