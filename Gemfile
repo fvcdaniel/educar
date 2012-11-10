@@ -12,6 +12,7 @@ gem 'rolify'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'exception_notification'
+gem 'brazilian-rails'
 
 group :development do
 end
