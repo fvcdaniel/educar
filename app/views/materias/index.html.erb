@@ -14,7 +14,7 @@
   <tbody>
     <% @materias.each do |materia| %>
       <tr>
-        <td><%= materia.nome %></td>
+        <td><%= materia.nome.titleize %></td>
         <td><%= materia.imagem %></td>
         <td>
           <%= link_to image_tag('edit.png'), edit_materia_path(materia), :class => 'quick-edit',:title => 'editar' %>
