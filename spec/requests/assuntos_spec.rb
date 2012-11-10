@@ -54,7 +54,7 @@ describe "Assuntos" do
       describe 'validacao 3' do
         before do
           fill_in 'Nome', with: 'AssuntoMateria'
-          select 'portugues', from: 'Materia'
+          select 'portugues', from: 'Matéria'
           click_button 'Criar Assunto'
         end
         it {should have_selector('div.alert.alert-success', text: 'Assunto criado com sucesso.')}

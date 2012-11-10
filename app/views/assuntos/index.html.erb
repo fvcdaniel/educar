@@ -16,7 +16,7 @@
     <% @assuntos.each do |assunto| %>
       <tr>
         <td><%= link_to assunto.id, assunto_path(assunto) %></td>
-        <td><%= assunto.nome %></td>
+        <td><%= assunto.nome.titleize %></td>
         <td><%= assunto.materia_id %></td>
         <td><%= assunto.assunto_id %></td>
         <td>

@@ -6,7 +6,7 @@ class MateriasController < ApplicationController
   # GET /materias
   # GET /materias.json
   def index
-    @materias = Materia.all
+    @materias = Materia.all(:order => :nome)
 
     respond_to do |format|
       format.html # index.html.erb
