@@ -8,4 +8,7 @@ class HomeController < ApplicationController
     	@assuntos = Assunto.where(:assunto_id => nil).order(:nome).limit(100)
     end
   end
+  def resolvendo
+
+  end
 end

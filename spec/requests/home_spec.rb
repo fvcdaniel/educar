@@ -30,6 +30,15 @@ describe "Home" do
 		it { should have_selector('a', text: 'CRASE')}
 		it { should have_selector('a', text: 'CONCURSO - CARGO')}
 		it { should_not have_selector('a', text: 'CONCURSO2 - CARGO2')}
+		describe "click link from assunto" do
+			before do
+				click_link "CRASE"
+				save_and_open_page
+			end
+			
+			it { should have_selector('h1', text: 'Resolvendo')}
+			after do save_and_open_page end
+		end
 	end
 
 	describe "click link from materias menu 2" do

@@ -12,7 +12,7 @@ gem 'rolify'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'exception_notification'
-gem 'brazilian-rails'
+gem 'brstring'
 
 group :development do
 end
@@ -31,6 +31,7 @@ group :test do
   gem 'rb-fsevent', :require => false
   gem 'growl', '1.0.3'
   gem 'factory_girl_rails'
+  gem 'launchy'
 end
 
 group :production do
