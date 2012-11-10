@@ -1,0 +1,7 @@
+$('#premiolinha_codfam').empty();
+$('#premiolinha_codfam').append($("<option></option>").attr("value",'').text('TODAS'));
+<% for familia in @familias %>
+
+	$('#premiolinha_codfam').append($("<option></option>").attr("value",<%= familia.codfam %>).text('<%= escape_javascript(familia.name) %>'));
+
+<% end %>

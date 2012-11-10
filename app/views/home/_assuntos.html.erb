@@ -1,6 +1,4 @@
-<a class="assunto" href='#'> 
-	<%= assunto.nome.upcase %>
-</a>
+<%= link_to assunto.nome.upcase, home_resolvendo_path(:materia_id => assunto.materia_id, :assunto_id => assunto.id), :class => 'assunto'%>
     
 <ul>    
 	<% unless assunto.assuntos.blank? %>

@@ -1,0 +1,34 @@
+<h1>Resolvendo</h1>
+
+
+<div class="row-fluid">
+	<div class="span8 offset1">
+		<%unless @questoes.blank? %>
+	
+			<% @questoes.each do |questao| %>
+
+				<%= questao_texto questao %>
+
+				<%unless questao.itens.blank? %>
+					<ul class="ul-questao">
+						<% questao.itens.each.with_index do |item, index|%>
+							<li class="item">
+								<%= radio_button_tag 'color', "green", false, :class => "item-radio", :style => 'margin: 0px' %>
+								<%= item_desc(item, index) %>
+							</li>
+						<% end %>
+						<div class="form-actions">
+							<input type="submit" value="Responder" name="commit" class="btn">
+					</ul>
+				<% else %>
+					<p> Nenhum item cadastrado para esta questão... </p>
+				<% end %>
+
+			<% end %>
+
+		<%else%>
+			<p> Nenhuma questão cadastrada... </p>
+		<%end%>
+
+	</div>
+</div>

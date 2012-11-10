@@ -3,3 +3,8 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
 
 RAILS_ENV=production bundle exec rake assets:precompile && git add . && git commit -m "test
 e" && git push origin master && cap deploy
+
+
+
+    use -E utf-8 command line argument to ruby, or
+    set your RUBYOPT environment variable to "-E utf-8"

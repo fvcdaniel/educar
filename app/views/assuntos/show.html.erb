@@ -7,9 +7,9 @@
   <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
   <dd><%= @assunto.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:materia_id) %>:</strong></dt>
-  <dd><%= @assunto.materia_id %></dd>
+  <dd><%= @assunto.materia.nome.titleize %></dd>
   <dt><strong><%= model_class.human_attribute_name(:assunto_id) %>:</strong></dt>
-  <dd><%= @assunto.assunto_id %></dd>
+  <dd><%= @assunto.assunto.nome.titleize if @assunto.assunto %></dd>
 </dl>
 
 <div class="form-actions">

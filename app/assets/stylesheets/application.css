@@ -39,9 +39,21 @@
 .tree{
   list-style-type: none;
 }
+.item{
+
+  list-style-type: none;
+  padding-left: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+.item:hover{
+  background-color: #FFFFDD;
+}
 .concurso{
 	margin: 0 0 10px 25px;
 }
-
+.ul-questao {
+  margin-top: 10px;
+}
 
 

@@ -35,9 +35,8 @@ describe "Home" do
 				click_link "CRASE"
 				save_and_open_page
 			end
-			
+
 			it { should have_selector('h1', text: 'Resolvendo')}
-			after do save_and_open_page end
 		end
 	end
 
