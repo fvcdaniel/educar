@@ -17,8 +17,8 @@
       <tr>
         <td><%= link_to assunto.id, assunto_path(assunto) %></td>
         <td><%= assunto.nome.titleize %></td>
-        <td><%= assunto.materia_id %></td>
-        <td><%= assunto.assunto_id %></td>
+        <td><%= assunto.materia.nome %></td>
+        <td><%= assunto.assunto.nome %></td>
         <td>
           <%= link_to image_tag('edit.png'), edit_assunto_path(assunto), :class => 'quick-edit',
                   :title => 'editar' %>
