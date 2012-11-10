@@ -2,7 +2,7 @@
   <li class="nav-header">Materias</li>
   <% @materias.each do |m|%>
   	<li class="<%= materia_active m.id%>">
-  		<%= link_to m.nome, root_path(:materia_id => m.id)%>
+  		<%= link_to m.nome.titleize, root_path(:materia_id => m.id)%>
   	</li>
   <% end %>
   <% if @materias.blank? %>

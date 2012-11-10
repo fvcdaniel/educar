@@ -218,11 +218,14 @@ pt-BR:
         one: 'Questão'
         other: 'Questões'
       item: 'Item'
+      assunto: 'Assunto'
     attributes:
       questao:
         materia: 'Matéria'
       item:
         desc: 'Descrição'
         questao: 'Questão'
+      assunto:
+        materia: 'Matéria'
     errors:
       <<: *errors
