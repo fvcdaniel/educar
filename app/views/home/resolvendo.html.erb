@@ -1,5 +1,3 @@
-<div id="ajax_messages"></div>
-
 <h1>Resolvendo</h1>
 
 <div class="row-fluid">
@@ -7,7 +5,7 @@
 		<%unless @questoes.blank? %>
 	
 			<% @questoes.each.with_index do |questao, index| %>
-
+				<div id="<%=questao.id%>_ajax_messages"></div>
 				<%= questao_texto(questao, index) %>
 				<%= hidden_field_tag 'questao_id', questao.id %>
 
