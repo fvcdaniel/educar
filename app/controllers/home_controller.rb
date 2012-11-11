@@ -36,4 +36,14 @@ class HomeController < ApplicationController
     	@questoes = Questao.first(100)
     end
   end
+
+  def dynamic_select_item
+  	@questao = Questao.find(params[:id])
+  	@gabarito = @questao.gabarito
+  	@resp = params[:resp]
+
+  	respond_to do |format|
+      format.js
+    end
+  end
 end

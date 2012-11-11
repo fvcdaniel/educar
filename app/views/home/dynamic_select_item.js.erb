@@ -1,7 +1,19 @@
-$('#premiolinha_codfam').empty();
-$('#premiolinha_codfam').append($("<option></option>").attr("value",'').text('TODAS'));
-<% for familia in @familias %>
 
-	$('#premiolinha_codfam').append($("<option></option>").attr("value",<%= familia.codfam %>).text('<%= escape_javascript(familia.name) %>'));
+$('#ajax_messages').empty();
 
+$('#<%=@questao.id%>_item_questao_A').css('background-color', '#EEEEEE');
+$('#<%=@questao.id%>_item_questao_B').css('background-color', '#EEEEEE');
+$('#<%=@questao.id%>_item_questao_C').css('background-color', '#EEEEEE');
+$('#<%=@questao.id%>_item_questao_D').css('background-color', '#EEEEEE');
+$('#<%=@questao.id%>_item_questao_E').css('background-color', '#EEEEEE');
+
+<% if @gabarito == @resp %>
+	$('#<%=@questao.id%>_item_questao_<%=@resp%>').css('background-color', '#D6E9C6');
+	$('#ajax_messages').append($('<div class="alert alert-success">Parabéns !!! Resposta Correta!</div>'));
+<% else %>
+	$('#<%=@questao.id%>_item_questao_<%=@resp%>').css('background-color', '#EED3D7');
+	$('#<%=@questao.id%>_item_questao_<%=@gabarito%>').css('background-color', '#D6E9C6');
+	$('#ajax_messages').append($('<div class="alert alert-error">Sorry !!! Resposta Errada!</div>'));
 <% end %>
+
+

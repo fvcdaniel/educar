@@ -12,6 +12,8 @@ Educar::Application.routes.draw do
   devise_for :users
 
   match 'home/resolvendo'
+  #match 'home/dynamic_select_item/:id' => 'home#dynamic_select_item'
+  get "home/dynamic_select_item/:id", :controller => 'home', :action => 'dynamic_select_item'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

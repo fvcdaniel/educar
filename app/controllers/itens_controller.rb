@@ -60,7 +60,7 @@ class ItensController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item criado com sucesso.' }
+        format.html { redirect_to @item.questao, notice: 'Item criado com sucesso.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class ItensController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item atualizado com sucesso.' }
+        format.html { redirect_to @item.questao, notice: 'Item atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -89,10 +89,11 @@ class ItensController < ApplicationController
   # DELETE /itens/1.json
   def destroy
     @item = Item.find(params[:id])
+    questao = @item.questao
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to itens_url }
+      format.html { redirect_to questao }
       format.json { head :no_content }
     end
   end

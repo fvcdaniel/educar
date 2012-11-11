@@ -1,24 +1,26 @@
-<h1>Resolvendo</h1>
+<div id="ajax_messages"></div>
 
+<h1>Resolvendo</h1>
 
 <div class="row-fluid">
 	<div class="span8 offset1">
 		<%unless @questoes.blank? %>
 	
-			<% @questoes.each do |questao| %>
+			<% @questoes.each.with_index do |questao, index| %>
 
-				<%= questao_texto questao %>
+				<%= questao_texto(questao, index) %>
+				<%= hidden_field_tag 'questao_id', questao.id %>
 
 				<%unless questao.itens.blank? %>
 					<ul class="ul-questao">
 						<% questao.itens.each.with_index do |item, index|%>
-							<li class="item">
-								<%= radio_button_tag 'color', "green", false, :class => "item-radio", :style => 'margin: 0px' %>
+							<li id="<%=questao.id%>_item_questao_<%=value_item(index)%>" class="item">
+								<%= radio_button_tag "#{questao.id}_item_questao", value_item(index), false, :class => "item-radio", :style => 'margin: 0px' %>
 								<%= item_desc(item, index) %>
 							</li>
 						<% end %>
 						<div class="form-actions">
-							<input type="submit" value="Responder" name="commit" class="btn">
+							<input type="submit" value="Responder" name="commit" class="btn" , onClick="javascript:ajaxResp(<%=questao.id%>);" >
 					</ul>
 				<% else %>
 					<p> Nenhum item cadastrado para esta questão... </p>

@@ -5,6 +5,7 @@
 	  <%= f.association :concurso %>
 	  <%= f.association :materia %>
 	  <%= f.association :assunto %>
+    <%= f.input :gabarito, :collection => ['A', 'B', 'C', 'D', 'E'], :as => :select, :input_html => { :style => "width: auto" } %>
 	  <%= f.input :texto, :as => :text, :input_html => {:rows => 8, :cols => 80 } %>
   </div>
 

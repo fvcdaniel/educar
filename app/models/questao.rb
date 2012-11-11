@@ -1,3 +1,4 @@
+#encoding=utf-8
 # == Schema Information
 #
 # Table name: questoes
@@ -22,10 +23,19 @@ class Questao < ActiveRecord::Base
   
   attr_accessible :texto, :materia_id, :concurso_id, :assunto_id, :gabarito, :tipo, :user_id
 
-  validates_presence_of :texto, :materia, :concurso, :assunto, :user
+  validates_presence_of :texto, :materia, :concurso, :assunto, :user, :gabarito
+
+  validate :gabarito_between_a_e
 
   def name
   	self.id.to_s + ' - ' + self.assunto.name
+  end
+
+  def gabarito_between_a_e
+
+    unless ['A', 'B', 'C', 'D', 'E'].include?(self.gabarito) 
+      errors.add(:gabarito, "não é válido")
+    end
   end
 
 end

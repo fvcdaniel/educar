@@ -6,4 +6,9 @@ module ApplicationHelper
 			end
 		end
 	end
+
+	def value_item(index)
+		itens = ('A'..'Z').collect{|a| a}
+		itens[index]
+	end
 end

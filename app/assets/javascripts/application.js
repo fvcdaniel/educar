@@ -14,3 +14,34 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+jQuery(document).ready(function() {
+
+	$("input[name='item_questao']").change(function(){
+		
+		var data1 = $('#questao_id').val();
+		var data2 = $("input[name='item_questao']:checked").val();
+		$.ajax({
+			type: "GET",
+			 url: "http://"+location.host+"/home/dynamic_select_item/"+data1+"?resp="+data2,
+			data: data1,
+			dataType: "script"
+		});
+
+	});
+
+});
+
+function ajaxResp(questao){
+
+	var str_data = "input[name='"+questao+"_item_questao']:checked"
+	var data = $(str_data).val();
+	$.ajax({
+		type: "GET",
+		 url: "http://"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+data,
+		data: questao,
+		dataType: "script"
+	});
+
+}
+

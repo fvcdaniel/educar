@@ -10,13 +10,15 @@
   <dd><%= @questao.concurso.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:assunto_id) %>:</strong></dt>
   <dd><%= @questao.assunto.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:gabarito) %>:</strong></dt>
+  <dd><%= @questao.gabarito %></dd>
   <dt><strong><%= model_class.human_attribute_name(:texto) %>:</strong></dt>
   <dd><%= @questao.texto %></dd>
 </dl>
 
 <dl class="dl-horizontal">
   <% @questao.itens.each.with_index do |item, index| %>
-    <dt><strong>Item <%= index+1 %>:</strong></dt>
+    <dt><strong>Item <%= value_item index %>:</strong></dt>
     <dd><%= (link_to item.desc, item_path(item)) %></dd>
   <% end %>
 </dl>
