@@ -1,3 +1,5 @@
+#encoding=utf-8
+
 # == Schema Information
 #
 # Table name: assuntos
@@ -20,8 +22,16 @@ class Assunto < ActiveRecord::Base
   validates_presence_of :nome
   validates_presence_of :materia
 
+  validate :assunto_id_cant_be_self_id
+
   def name
   	self.nome
+  end
+
+  def assunto_id_cant_be_self_id
+    if self.id == self.assunto_id
+      errors.add(:assunto_id, "não pode ser o mesmo assunto")
+    end
   end
 
 end
