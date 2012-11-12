@@ -42,6 +42,17 @@ class HomeController < ApplicationController
   	@gabarito = @questao.gabarito
   	@resp = params[:resp]
 
+  	
+  	@start = Time.zone.parse(params["start_time"])
+  	@end = 0.second.ago
+  	tempo_final = @end - @start
+  	if user_signed_in?
+  		@usuario = current_user
+  	else
+  		@usuario = User.find_by_email('default@localhost.com')
+  	end
+  	Resposta.create(:questao_id => @questao_id, :user_id => @usuario.id, :gabarito => @gabarito, :resposta => @resp, :tempo => tempo_final)
+
   	respond_to do |format|
       format.js
     end

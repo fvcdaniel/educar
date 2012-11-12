@@ -34,11 +34,12 @@ jQuery(document).ready(function() {
 
 function ajaxResp(questao){
 
+	var start_time = $('#start_time').val();
 	var str_data = "input[name='"+questao+"_item_questao']:checked"
 	var data = $(str_data).val();
 	$.ajax({
 		type: "GET",
-		 url: "http://"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+data,
+		 url: "http://"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+data+"&start_time="+start_time,
 		data: questao,
 		dataType: "script"
 	});

@@ -20,6 +20,7 @@ class Questao < ActiveRecord::Base
   belongs_to :assunto
   belongs_to :user
   has_many :itens, :dependent => :destroy
+  has_many :respostas, :dependent => :destroy
   
   attr_accessible :texto, :materia_id, :concurso_id, :assunto_id, :gabarito, :tipo, :user_id
 

@@ -7,7 +7,7 @@
 			<% @questoes.each.with_index do |questao, index| %>
 				<div id="<%=questao.id%>_ajax_messages"></div>
 				<%= questao_texto(questao, index) %>
-				<%= hidden_field_tag 'questao_id', questao.id %>
+				<%= hidden_field_tag "start_time", 3.seconds.from_now %>
 
 				<%unless questao.itens.blank? %>
 					<ul class="ul-questao">
