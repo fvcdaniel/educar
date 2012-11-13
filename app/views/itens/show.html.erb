@@ -13,6 +13,9 @@
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               @item.questao, :class => 'btn'  %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_item_path(:questao => @item.questao.id),
+            :class => 'btn' %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_item_path(@item), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
