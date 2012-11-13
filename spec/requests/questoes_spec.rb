@@ -78,6 +78,7 @@ describe "Questoes" do
 					select 'logica', from: 'Matéria'
 					select 'Crase', from: 'Assunto'
 					fill_in 'Texto', with: 'Quem nasceu primeiro o ovo ou a galinha?'
+					select 'A', from: 'Gabarito'
 					click_button 'Criar Questão'
 				end
 				it {should have_selector('div.alert.alert-success', text: 'Questão criada com sucesso.')}

@@ -4,7 +4,7 @@ describe "assuntos/show" do
   before(:each) do
     @assunto = assign(:assunto, stub_model(Assunto,
       :nome => "Nome",
-      :materia => nil,
+      :materia => FactoryGirl.create(:materia),
       :assunto => nil
     ))
   end

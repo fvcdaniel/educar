@@ -39,6 +39,7 @@ FactoryGirl.define do
 
   factory :questao do
     texto "Texto da questao"
+    gabarito "A"
     association "materia"
     association "concurso"
     association "assunto" 
@@ -46,6 +47,7 @@ FactoryGirl.define do
 
   factory :questao2, class: Questao do
     texto "Texto da questao"
+    gabarito "A"
     association "materia"
     association "concurso"
     association "assunto" 
