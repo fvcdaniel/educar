@@ -11,4 +11,12 @@ module ApplicationHelper
 		itens = ('A'..'Z').collect{|a| a}
 		itens[index]
 	end
+
+	def default_class(page_class)
+		if page_class.empty?
+			'yeld-unit'
+		else
+			page_class
+		end
+	end
 end

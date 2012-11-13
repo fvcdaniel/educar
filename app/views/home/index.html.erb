@@ -1,23 +1,27 @@
-<h1>ASSUNTOS</h1>
+<% provide(:class, 'blank') if params[:materia_id].blank? %>
+<% unless params[:materia_id].blank? %>
+	<h1><%= "#{@materia.nome.upcase} - "%>ASSUNTOS</h1>
 
-    <ul>
-    	<% unless @assuntos.blank? %>
-    		<% @assuntos.each do |assunto| %>
-		    	<p>
-		    		<li class="tree">
-			    		<%= render :partial => 'assuntos', :locals => { :assunto => assunto } %>
-			    	</li>
-			    </p>
+	    <ul>
+	    	<% unless @assuntos.blank? %>
+	    		<% @assuntos.each do |assunto| %>
+			    	<p>
+			    		<li class="tree">
+				    		<%= render :partial => 'assuntos', :locals => { :assunto => assunto } %>
+				    	</li>
+				    </p>
+			    <% end %>
+	    	<% end %>
+	    </ul>
+
+	<h1><%= "#{@materia.nome.upcase} - "%>CONCURSOS</h1>
+
+		<%unless @concursos.blank? %>
+			<% @concursos.each do |concurso| %>
+				<a class="assunto concurso" href='#'> 
+					<%= concurso.nome.upcase + " - " + concurso.cargo.upcase %>
+				</a>
 		    <% end %>
-    	<% end %>
-    </ul>
-
-<h1>CONCURSOS</h1>
-
-	<%unless @concursos.blank? %>
-		<% @concursos.each do |concurso| %>
-			<a class="assunto concurso" href='#'> 
-				<%= concurso.nome.upcase + " - " + concurso.cargo.upcase %>
-			</a>
 	    <% end %>
-    <% end %>
+
+<% end %>
