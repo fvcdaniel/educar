@@ -29,8 +29,10 @@ class Assunto < ActiveRecord::Base
   end
 
   def assunto_id_cant_be_self_id
-    if self.id == self.assunto_id
-      errors.add(:assunto_id, "não pode ser o mesmo assunto")
+    unless self.new_record?
+      if self.id == self.assunto_id
+        errors.add(:assunto_id, "não pode ser o mesmo assunto")
+      end
     end
   end
 
