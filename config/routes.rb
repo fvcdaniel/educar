@@ -1,6 +1,7 @@
 Educar::Application.routes.draw do
   resources :itens
 
+  get "questoes/dynamic_select_assuntos/:id", :controller => 'questoes', :action => 'dynamic_select_assuntos'
   resources :questoes
 
   resources :concursos

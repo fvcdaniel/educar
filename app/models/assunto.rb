@@ -28,6 +28,14 @@ class Assunto < ActiveRecord::Base
   	self.nome
   end
 
+  def name_with_parent
+    if self.assunto_id
+      "#{self.assunto.name_with_parent} - #{self.name}"  
+    else
+      "#{self.name}"
+    end
+  end
+
   def assunto_id_cant_be_self_id
     unless self.new_record?
       if self.id == self.assunto_id

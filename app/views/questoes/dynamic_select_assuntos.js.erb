@@ -1,0 +1,11 @@
+$('#questao_assunto_id').empty();
+
+<% unless @materia.blank? %>
+
+	<% for assunto in @materia.assuntos.sort {|a,b| a.name_with_parent <=> b.name_with_parent} %>
+
+		$('#questao_assunto_id').append($("<option></option>").attr("value",<%= assunto.id %>).text('<%= escape_javascript(assunto.name_with_parent) %>'));
+
+	<% end %>
+
+<% end %>

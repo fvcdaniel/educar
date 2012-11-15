@@ -2,9 +2,15 @@
   <%= f.error_notification %>
   
   <div class="form-inputs">
-	  <%= f.association :concurso %>
-	  <%= f.association :materia %>
-	  <%= f.association :assunto %>
+	  <%= f.association :concurso, :input_html => { :style => "width: auto" } %>
+    <%= f.association :materia, :input_html => { :style => "width: auto" } %>
+
+    <% if @questao.materia.blank? %>
+      <%= f.association :assunto, :collection => [] %>
+    <% else %>
+      <%= f.association :assunto, :collection => @questao.materia.assuntos.sort {|a,b| a.name_with_parent <=> b.name_with_parent}.collect{|a| [a.name_with_parent, a.id]}, :input_html => { :style => "width: auto" } %>
+    <% end %>
+	  
     <%= f.input :gabarito, :collection => ['A', 'B', 'C', 'D', 'E'], :as => :select, :input_html => { :style => "width: auto" } %>
 	  <%= f.input :texto, :as => :text, :input_html => {:rows => 8, :cols => 80 }, :hint => 'coloque aqui a pergunta...' %>
   </div>

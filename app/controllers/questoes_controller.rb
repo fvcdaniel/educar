@@ -1,7 +1,14 @@
 #encoding=utf-8
 class QuestoesController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:dynamic_select_assuntos]
+  before_filter :debug_controller
+  
+  def debug_controller
+    puts 'ok'
+    puts params[:controller]
+    puts params[:action]
+  end
   
   # GET /questoes
   # GET /questoes.json
@@ -83,6 +90,15 @@ class QuestoesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questoes_url }
       format.json { head :no_content }
+    end
+  end
+
+  def dynamic_select_assuntos
+    if can? :create, Questao
+      @materia = Materia.find(params[:id])
+    end 
+    respond_to do |format|
+      format.js
     end
   end
 end

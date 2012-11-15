@@ -30,6 +30,16 @@ jQuery(document).ready(function() {
 
 	});
 
+	jQuery('#questao_materia_id').change(function() {
+		var data = $('#questao_materia_id').val();
+		$.ajax({
+			type: "GET",
+			 url: "http://"+location.host+"/questoes/dynamic_select_assuntos/"+data,
+			data: data,
+			dataType: "script"
+		});
+	});
+
 });
 
 function ajaxResp(questao){
