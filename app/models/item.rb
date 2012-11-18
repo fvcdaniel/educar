@@ -16,4 +16,8 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :desc, :questao
 
+  def name
+  	self.desc
+  end
+
 end
