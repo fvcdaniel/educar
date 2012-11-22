@@ -1,4 +1,8 @@
+
+
 <%= simple_form_for @questao, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= tinymce_assets %>
+  <%= tinymce %>
   <%= f.error_notification %>
   
   <div class="form-inputs">
@@ -12,7 +16,7 @@
     <% end %>
 	  
     <%= f.input :gabarito, :collection => ['A', 'B', 'C', 'D', 'E'], :as => :select, :input_html => { :style => "width: auto" } %>
-	  <%= f.input :texto, :as => :text, :input_html => {:rows => 8, :cols => 80 }, :hint => 'coloque aqui a pergunta...' %>
+	  <%= f.input :texto, :as => :text, :input_html => {:rows => 8, :cols => 80, :class => 'tinymce' }, :hint => 'coloque aqui a pergunta...' %>
     
     <%= f.input :itema, :label => 'Item A', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item A...' %>
     <%= f.input :itemb, :label => 'Item B', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item B...' %>
@@ -27,3 +31,5 @@
                 questoes_path, :class => 'btn' %>
   </div>
 <% end %>
+
+

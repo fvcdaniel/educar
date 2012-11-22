@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require_tree .
 
+
 jQuery(document).ready(function() {
 
 	$("input[name='item_questao']").change(function(){
