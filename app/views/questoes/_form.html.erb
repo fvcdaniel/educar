@@ -14,8 +14,11 @@
     <% else %>
       <%= f.association :assunto, :collection => @questao.materia.assuntos.sort {|a,b| a.name_with_parent <=> b.name_with_parent}.collect{|a| [a.name_with_parent, a.id]}, :input_html => { :style => "width: auto" } %>
     <% end %>
+
+    <%= f.input :tipo, :collection => [['Múltipla Escolha', 'M'], ['Certa / Errada', 'C']], :include_blank => false %>
 	  
-    <%= f.input :gabarito, :collection => ['A', 'B', 'C', 'D', 'E'], :as => :select, :input_html => { :style => "width: auto" } %>
+    <%= f.input :gabarito, :collection => ['A', 'B', 'C', 'D', 'E'], :as => :select, :input_html => { :style => "width: auto" }, :disabled => false %>
+
 	  <%= f.input :texto, :as => :text, :input_html => {:rows => 8, :cols => 80, :class => 'tinymce' }, :hint => 'coloque aqui a pergunta...' %>
     
     <%= f.input :itema, :label => 'Item A', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item A...' %>

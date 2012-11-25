@@ -24,7 +24,7 @@ class Questao < ActiveRecord::Base
   
   attr_accessible :texto, :materia_id, :concurso_id, :assunto_id, :gabarito, :tipo, :user_id, :itema, :itemb, :itemc, :itemd, :iteme
 
-  validates_presence_of :texto, :materia, :concurso, :assunto, :user, :gabarito
+  validates_presence_of :texto, :materia, :concurso, :assunto, :user, :gabarito, :tipo
 
   validate :gabarito_between_a_e
   validate :assunto_belongs_to_materia_id
