@@ -10,7 +10,7 @@
     <%= f.association :materia, :input_html => { :style => "width: auto" } %>
 
     <% if @questao.materia.blank? %>
-      <%= f.association :assunto, :collection => [] %>
+      <%= f.association :assunto, :collection => [], :input_html => { :style => "width: auto" } %>
     <% else %>
       <%= f.association :assunto, :collection => @questao.materia.assuntos.sort {|a,b| a.name_with_parent <=> b.name_with_parent}.collect{|a| [a.name_with_parent, a.id]}, :input_html => { :style => "width: auto" } %>
     <% end %>

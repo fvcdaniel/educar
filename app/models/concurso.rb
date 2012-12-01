@@ -20,7 +20,7 @@ class Concurso < ActiveRecord::Base
   has_many :questoes, :dependent => :destroy
 
   def name
-  	self.nome
+  	"#{self.nome} - #{self.ano} - #{self.cargo}".upcase
   end
   
 end
