@@ -105,5 +105,3 @@ function delete_item_temp(index){
 	return false;
 }
 
-function void(){}
-
