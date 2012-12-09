@@ -42,15 +42,17 @@ jQuery(document).ready(function() {
 	});
 
 	jQuery('#add_item').click(function() {
-		var data = tinyMCE.get('questao_item').getContent();
 		var questao_id = $('#questao_id').val();
-		if(data == ''){
+		vars = new Object();
+		vars.item_desc = tinyMCE.get('questao_item').getContent();;
+		vars.questao_id = $('#questao_id').val();;
+		if(vars.item_desc == ''){
 			alert('não pode ficar em branco')
 		}else{
 			$.ajax({
 				type: "GET",
-				url: "http://"+location.host+"/questoes/dynamic_add_item?item_desc="+data+"&questao_id="+questao_id,
-				data: data,
+				url: "http://"+location.host+"/questoes/dynamic_add_item?questao_id="+questao_id,
+				data: vars,
 				dataType: "script"
 			});
 			$('#questao_item').val('');

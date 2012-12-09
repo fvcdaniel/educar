@@ -36,6 +36,8 @@ class Questao < ActiveRecord::Base
 
   def gabarito_for_tipos
 
+    self.gabarito = self.gabarito.upcase
+
     if self.tipo == 'M'
       if self.questao_itens.blank? or self.questao_itens.size == 5
         unless ['A', 'B', 'C', 'D', 'E'].include?(self.gabarito) 
@@ -74,6 +76,5 @@ class Questao < ActiveRecord::Base
       end
     end
   end
-
 
 end
