@@ -1,5 +1,5 @@
 
-
+<%= hidden_field_tag 'questao_id', params[:id] %>
 <%= simple_form_for @questao, :html => { :class => 'form-horizontal' } do |f| %>
   <%= tinymce_assets %>
   <%= tinymce %>
@@ -17,15 +17,48 @@
 
     <%= f.input :tipo, :collection => [['Múltipla Escolha', 'M'], ['Certa / Errada', 'C']], :include_blank => false %>
 	  
-    <%= f.input :gabarito, :collection => ['A', 'B', 'C', 'D', 'E'], :as => :select, :input_html => { :style => "width: auto" }, :disabled => false %>
+    <%= f.input :gabarito, :input_html => { :style => "width: 100px;" }, :hint => 'C ou E ...' %>
 
 	  <%= f.input :texto, :as => :text, :input_html => {:rows => 8, :cols => 80, :class => 'tinymce' }, :hint => 'coloque aqui a pergunta...' %>
+
+    <div class="control-group text optional">
+      <label for="questao_item" class="text optional control-label">
+        Adicionar Item
+      </label>
+      <div class="controls">
+        <textarea rows="4" name="dinamic_questao_item" id="questao_item" cols="80" class="text optional tinymce"></textarea>
+        <input id="add_item" value="Criar Item" name="commit" class="btn">
+        <p class="help-block">
+          coloque aqui os itens...
+        </p>
+      </div>
+    </div>
     
-    <%= f.input :itema, :label => 'Item A', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item A...' %>
-    <%= f.input :itemb, :label => 'Item B', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item B...' %>
-    <%= f.input :itemc, :label => 'Item C', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item C...' %>
-    <%= f.input :itemd, :label => 'Item D', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item D...' %>
-    <%= f.input :iteme, :label => 'Item E', :as => :text, :input_html => {:rows => 4, :cols => 80 }, :hint => 'coloque aqui o item E...' %>
+    <div id="questao_itens">
+
+      <% unless session['questao_itens'].blank? %>
+        <% session['questao_itens'].each.with_index do |i,index| %>
+          <div class="control-group text optional">
+            <label for="questao_item" class="text optional control-label">
+              Item <%= value_item index %>
+            </label>
+            <div class="controls" style="padding-top:5px; margin-bottom:5px;">
+              <a onClick="javascript:delete_item_temp(<%= index %>); " href="javascript:void(0)"> 
+                <i style="float:left; margin-right:5px;" class="icon-remove"></i>
+              </a>
+              <% unless @questao.itens[index].blank? %>
+                <a href="<%= edit_item_path(@questao.itens[index].id)%>">
+                  <i style="float:left; margin-right:5px;" class="icon-edit"></i>
+                </a>
+              <% end %>
+              <%= raw i %> 
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
   </div>
 
   <div class="form-actions">

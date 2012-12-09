@@ -2,13 +2,13 @@
 module HomeHelper
 
 	def questao_texto (questao, index)
-		"#{index+1} - #{questao.texto}"
+		"<div style=\"background-color:#F9F9F9; padding-left:10px;\"> #{index+1} <div style=\"padding-left:35px; padding-bottom:10px; \"> #{questao.texto} </div> </div>"
 	end
 
 	def item_desc(item, index)
 		unless item.blank? and index.blank?
 			itens = ('A'..'Z').collect{|a| a}
-			"#{itens[index]} - #{item.desc}"
+			"#{itens[index]} <div style=\"padding-left:45px;\"> #{item.desc} </div>"
 		else
 			"não foi possível identificar a descrição do item"
 		end

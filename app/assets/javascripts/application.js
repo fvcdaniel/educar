@@ -41,6 +41,24 @@ jQuery(document).ready(function() {
 		});
 	});
 
+	jQuery('#add_item').click(function() {
+		var data = tinyMCE.get('questao_item').getContent();
+		var questao_id = $('#questao_id').val();
+		if(data == ''){
+			alert('não pode ficar em branco')
+		}else{
+			$.ajax({
+				type: "GET",
+				url: "http://"+location.host+"/questoes/dynamic_add_item?item_desc="+data+"&questao_id="+questao_id,
+				data: data,
+				dataType: "script"
+			});
+			$('#questao_item').val('');
+		}
+		tinyMCE.get('questao_item').setContent('');
+		return false;
+	}); 
+
 });
 
 function ajaxResp(questao){
@@ -48,6 +66,7 @@ function ajaxResp(questao){
 	var start_time = $('#start_time').val();
 	var str_data = "input[name='"+questao+"_item_questao']:checked"
 	var data = $(str_data).val();
+
 	$.ajax({
 		type: "GET",
 		 url: "http://"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+data+"&start_time="+start_time,
@@ -56,4 +75,35 @@ function ajaxResp(questao){
 	});
 
 }
+
+function ajaxResp2(questao){
+
+	var start_time = $('#start_time').val();
+	var checked = []
+	$("input[name='"+questao+"_item_questao']:checked").each(function () {
+    	checked.push($(this).val());
+	});
+	$.ajax({
+		type: "GET",
+		 url: "http://"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+checked+"&start_time="+start_time,
+		data: questao,
+		dataType: "script"
+	});
+
+}
+
+function delete_item_temp(index){
+	if (confirm("Você tem certeza?")){
+		var questao_id = $('#questao_id').val();
+		$.ajax({
+			type: "GET",
+			url: "http://"+location.host+"/questoes/dynamic_add_item?op=D&item_index="+index+"&questao_id="+questao_id,
+			data: '',
+			dataType: "script"
+		});
+	}
+	return false;
+}
+
+function void(){}
 

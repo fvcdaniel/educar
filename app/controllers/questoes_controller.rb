@@ -1,55 +1,7 @@
 #encoding=utf-8
 class QuestoesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_itens
-  load_and_authorize_resource :except => [:dynamic_select_assuntos]
-  before_filter :debug_controller
-
-  def get_itens
-    unless params[:questao].blank?
-      @itema = params[:questao][:itema] 
-      @itemb = params[:questao][:itemb] 
-      @itemc = params[:questao][:itemc] 
-      @itemd = params[:questao][:itemd] 
-      @iteme = params[:questao][:iteme] 
-
-      unless (@itema.blank? and @itemb.blank? and @itemc.blank? and @itemd.blank? and @iteme.blank? )
-        if @itema.blank? 
-          @itema = 'não especificado...'
-        end
-        if @itemb.blank? 
-          @itemb = 'não especificado...'
-        end
-        if @itemc.blank? 
-          @itemc = 'não especificado...'
-        end
-        if @itemd.blank? 
-          @itemd = 'não especificado...'
-        end
-        if @iteme.blank? 
-          @iteme = 'não especificado...'
-        end 
-      end
-      
-      puts @itemc
-      
-      puts params[:questao]
-
-      params[:questao].delete(:itema)
-      params[:questao].delete(:itemb)
-      params[:questao].delete(:itemc)
-      params[:questao].delete(:itemd)
-      params[:questao].delete(:iteme)
-      
-      puts params[:questao] 
-    end
-  end
-  
-  def debug_controller
-    puts 'ok'
-    puts params[:controller]
-    puts params[:action]
-  end
+  load_and_authorize_resource :except => [:dynamic_select_assuntos, :dynamic_add_item]
   
   # GET /questoes
   # GET /questoes.json
@@ -77,6 +29,7 @@ class QuestoesController < ApplicationController
   # GET /questoes/new.json
   def new
     @questao = Questao.new
+    session['questao_itens'] = Array.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -87,6 +40,7 @@ class QuestoesController < ApplicationController
   # GET /questoes/1/edit
   def edit
     @questao = Questao.find(params[:id])
+    session['questao_itens'] = @questao.itens.collect{|i| i.desc}
   end
 
   # POST /questoes
@@ -94,26 +48,15 @@ class QuestoesController < ApplicationController
   def create
     @questao = Questao.new(params[:questao])
     @questao.user = current_user
-
-    unless @questao.valid?
-      @questao.itens << Item.new(:desc => @itema, :questao_id => @questao)
-      @questao.itens << Item.new(:desc => @itemb, :questao_id => @questao)
-      @questao.itens << Item.new(:desc => @itemc, :questao_id => @questao)
-      @questao.itens << Item.new(:desc => @itemd, :questao_id => @questao)
-      @questao.itens << Item.new(:desc => @iteme, :questao_id => @questao)
-    end
+    @questao.questao_itens = session['questao_itens']
 
     respond_to do |format|
       if @questao.save
-        unless (@itema.blank? and @itemb.blank? and @itemc.blank? and @itemd.blank? and @iteme.blank? )
-          @questao.itens << Item.new(:desc => @itema, :questao_id => @questao.id)
-          @questao.itens << Item.new(:desc => @itemb, :questao_id => @questao.id)
-          @questao.itens << Item.new(:desc => @itemc, :questao_id => @questao.id)
-          @questao.itens << Item.new(:desc => @itemd, :questao_id => @questao.id)
-          @questao.itens << Item.new(:desc => @iteme, :questao_id => @questao.id)
-          @questao.save
+        session['questao_itens'].each do |i|
+          @questao.itens << Item.new(:desc => i, :questao_id => @questao.id)
         end
-        
+        @questao.save
+        session['questao_itens'] = nil
         format.html { redirect_to @questao, notice: 'Questão criada com sucesso.' }
         format.json { render json: @questao, status: :created, location: @questao }
       else
@@ -128,6 +71,7 @@ class QuestoesController < ApplicationController
   # PUT /questoes/1.json
   def update
     @questao = Questao.find(params[:id])
+    @questao.questao_itens = session['questao_itens']
 
     respond_to do |format|
       if @questao.update_attributes(params[:questao])
@@ -160,4 +104,37 @@ class QuestoesController < ApplicationController
       format.js
     end
   end
+
+  def dynamic_add_item
+
+    @itens = session['questao_itens']
+
+    unless params['questao_id'].blank?
+      @questao = Questao.find(params['questao_id'].to_i)
+      unless params['op'].blank?  
+        unless @questao.itens[params['item_index'].to_i].blank?
+          @questao.itens.delete @questao.itens[params['item_index'].to_i]
+          @questao.save
+        end
+      end
+    end
+
+    unless params['op'].blank?
+      @itens.delete @itens[params['item_index'].to_i]
+    else
+      if @itens.include? params['item_desc']
+        @alert = 'já existe um item com este valor'
+      else
+        @itens << params['item_desc']
+        unless @questao.blank?
+          @questao.itens << Item.new(:desc => params['item_desc'], :questao_id => @questao.id)
+        end
+      end
+    end  
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

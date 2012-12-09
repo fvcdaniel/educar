@@ -23,8 +23,8 @@
         <td><%= questao.concurso.nome %></td>
         <td><%= questao.assunto.nome %></td>
         <td>
-          <abbr title="<%= escape_javascript(get_tipo questao.tipo) %>">
-            <%= questao.tipo %>
+          <abbr title="<%= raw escape_javascript(get_tipo questao.tipo) %>">
+            <%= raw questao.tipo %>
           </abbr>
         </td>
         <td><%= questao.gabarito %></td>

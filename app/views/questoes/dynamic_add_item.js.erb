@@ -1,0 +1,31 @@
+$('#questao_itens').empty();
+
+var html = '';
+
+<% @itens.each.with_index do |i,index| %>
+
+	html += '<div class="control-group text optional">'
+	html += '<label for="questao_item" class="text optional control-label">'
+	html += 'Item <%= value_item index %>'
+	html += '</label>'
+	html += '<div class="controls" style="padding-top:5px;"> '
+	html += '<a onClick="javascript:delete_item_temp(<%= index %>); " href="javascript:void(0)"> '
+	html += '<i style="float:left; margin-right:5px;" class="icon-remove"></i></a> '
+	<% unless @questao.blank? %>
+	<% unless @questao.itens[index].blank? %>
+	  html += '<a href="<%= edit_item_path(@questao.itens[index].id)%>"> '
+	  	html += '<i style="float:left; margin-right:5px;" class="icon-edit"></i> '
+      html += '</a> '
+    <% end %>
+    <% end %>
+	html += '<%= raw i %>'
+	html += '</div>'
+	html += '</div>'
+
+<% end %>
+
+$('#questao_itens').html(html);
+
+<% unless @alert.blank? %>
+	alert('<%= @alert %>');
+<% end %>

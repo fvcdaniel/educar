@@ -1,19 +1,37 @@
 
 $('#<%=@questao.id%>_ajax_messages').empty();
 
-$('#<%=@questao.id%>_item_questao_A').css('background-color', '#EEEEEE');
-$('#<%=@questao.id%>_item_questao_B').css('background-color', '#EEEEEE');
-$('#<%=@questao.id%>_item_questao_C').css('background-color', '#EEEEEE');
-$('#<%=@questao.id%>_item_questao_D').css('background-color', '#EEEEEE');
-$('#<%=@questao.id%>_item_questao_E').css('background-color', '#EEEEEE');
+<% @questao.itens.each.with_index do |item,index| %>
+	$('#<%=@questao.id%>_item_questao_<%=value_item(index)%>').css('background-color', '#EEEEEE');	
+<% end %>
 
-<% if @gabarito == @resp %>
-	$('#<%=@questao.id%>_item_questao_<%=@resp%>').css('background-color', '#D6E9C6');
-	$('#<%=@questao.id%>_ajax_messages').append($('<div class="alert alert-success">Parabéns !!! Resposta Correta!</div>'));
-<% else %>
-	$('#<%=@questao.id%>_item_questao_<%=@resp%>').css('background-color', '#EED3D7');
-	$('#<%=@questao.id%>_item_questao_<%=@gabarito%>').css('background-color', '#D6E9C6');
-	$('#<%=@questao.id%>_ajax_messages').append($('<div class="alert alert-error">Sorry !!! Resposta Errada!</div>'));
+<% if @questao.tipo == 'M' %>
+	<% if @gabarito == @resp %>
+		$('#<%=@questao.id%>_item_questao_<%=@resp%>').css('background-color', '#D6E9C6');
+		$('#<%=@questao.id%>_ajax_messages').append($('<div class="alert alert-success">Parabéns !!! Resposta Correta!</div>'));
+	<% else %>
+		$('#<%=@questao.id%>_item_questao_<%=@resp%>').css('background-color', '#EED3D7');
+		$('#<%=@questao.id%>_item_questao_<%=@gabarito%>').css('background-color', '#D6E9C6');
+		$('#<%=@questao.id%>_ajax_messages').append($('<div class="alert alert-error">Sorry !!! Resposta Errada!</div>'));
+	<% end %>
+<% elsif @questao.tipo == 'C' %>
+	
+	<% @resp_tmp.each do |resp_index| %>
+		<% if(@gabarito[resp_index] == 'C') %>
+			$('#<%=@questao.id%>_item_questao_<%=value_item(resp_index)%>').css('background-color', '#D6E9C6');
+		<% else %>
+			$('#<%=@questao.id%>_item_questao_<%=value_item(resp_index)%>').css('background-color', '#EED3D7');
+		<% end %> 
+	<% end %>
+
+	<% @gab_tmp.each do |resp_index| %>
+		<% if(@gabarito[resp_index] == 'E') %>
+			$('#<%=@questao.id%>_item_questao_<%=value_item(resp_index)%>').css('background-color', '#D6E9C6');
+		<% else %>
+			$('#<%=@questao.id%>_item_questao_<%=value_item(resp_index)%>').css('background-color', '#EED3D7');
+		<% end %> 
+	<% end %>
+
 <% end %>
 
 

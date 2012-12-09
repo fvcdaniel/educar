@@ -13,12 +13,16 @@
 					<ul class="ul-questao">
 						<% questao.itens.each.with_index do |item, index|%>
 							<li id="<%=questao.id%>_item_questao_<%=value_item(index)%>" class="item">
-								<%= radio_button_tag "#{questao.id}_item_questao", value_item(index), false, :class => "item-radio", :style => 'margin: 0px' %>
-								<%= item_desc(item, index) %>
+								<% if questao.tipo == 'M' %>
+									<%= radio_button_tag "#{questao.id}_item_questao", value_item(index), false, :class => "item-radio", :style => 'margin: 0px' %>
+								<% elsif questao.tipo == 'C' %>
+									<%= check_box_tag "#{questao.id}_item_questao", index, false, :class => "item-radio", :style => 'margin: 0px' %>
+								<% end %>
+								<%= raw item_desc(item, index) %>
 							</li>
 						<% end %>
 						<div class="form-actions">
-							<input type="submit" value="Responder" name="commit" class="btn" , onClick="javascript:ajaxResp(<%=questao.id%>);" >
+							<input type="submit" value="Responder" name="commit" class="btn" , onClick="javascript:ajaxResp<%= questao.tipo == 'M' ? '' : '2' %>(<%=questao.id%>);" >
 					</ul>
 				<% else %>
 					<p> Nenhum item cadastrado para esta questão... </p>

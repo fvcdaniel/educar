@@ -22,22 +22,49 @@ class Questao < ActiveRecord::Base
   has_many :itens, :dependent => :destroy
   has_many :respostas, :dependent => :destroy
   
-  attr_accessible :texto, :materia_id, :concurso_id, :assunto_id, :gabarito, :tipo, :user_id, :itema, :itemb, :itemc, :itemd, :iteme
+  attr_accessible :texto, :materia_id, :concurso_id, :assunto_id, :gabarito, :tipo, :user_id
+  attr_accessor :questao_itens
 
   validates_presence_of :texto, :materia, :concurso, :assunto, :user, :gabarito, :tipo
 
-  validate :gabarito_between_a_e
   validate :assunto_belongs_to_materia_id
+  validate :gabarito_for_tipos
 
   def name
   	self.id.to_s + ' - ' + self.assunto.name
   end
 
-  def gabarito_between_a_e
+  def gabarito_for_tipos
 
-    unless ['A', 'B', 'C', 'D', 'E'].include?(self.gabarito) 
+    if self.tipo == 'M'
+      if self.questao_itens.blank? or self.questao_itens.size == 5
+        unless ['A', 'B', 'C', 'D', 'E'].include?(self.gabarito) 
+          errors.add(:gabarito, "não é válido")
+        end
+      else
+        itens = ('A'..'Z').collect{|a| a}.first(self.questao_itens.size)
+        unless itens.include?(self.gabarito) 
+          errors.add(:gabarito, "não é válido")
+        end
+      end
+      
+    elsif self.tipo == 'C'
+
+      arrtipos = ('A'..'Z').select{|a| !'CE'.include? a }
+      self.gabarito.chars.each do |g|
+        if arrtipos.include? g
+          errors.add(:gabarito, "não é válido")
+        end
+      end
+
+      if self.questao_itens.size != self.gabarito.size
+        errors.add(:gabarito, "não é válido")
+      end
+
+    else
       errors.add(:gabarito, "não é válido")
     end
+
   end
 
   def assunto_belongs_to_materia_id
@@ -46,22 +73,6 @@ class Questao < ActiveRecord::Base
         errors.add(:assunto, "Assunto tem que pertencer à matéria cadastrada!")
       end
     end
-  end
-
-  def itema
-    self.itens[0].desc if self.itens[0]
-  end
-  def itemb
-    self.itens[1].desc if self.itens[1]
-  end
-  def itemc
-    self.itens[2].desc if self.itens[2]
-  end
-  def itemd
-    self.itens[3].desc if self.itens[3]
-  end
-  def iteme
-    self.itens[4].desc if self.itens[4]
   end
 
 

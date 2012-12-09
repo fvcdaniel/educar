@@ -43,7 +43,13 @@ class HomeController < ApplicationController
   def dynamic_select_item
   	@questao = Questao.find(params[:id])
   	@gabarito = @questao.gabarito
-  	@resp = params[:resp]
+  	
+    if @questao.tipo == 'M'
+      @resp = params[:resp]
+    elsif @questao.tipo == 'C'
+      @resp_tmp = params[:resp].split(',').map{|a| a.to_i}
+      @gab_tmp = (0...@questao.itens.count).to_a - @resp_tmp
+    end
 
   	
   	@start = Time.zone.parse(params["start_time"])
