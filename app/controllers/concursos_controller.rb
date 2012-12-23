@@ -1,6 +1,21 @@
 class ConcursosController < ApplicationController
   before_filter :authenticate_user! 
+  before_filter :check_banca, :only=>[:create, :update]
   load_and_authorize_resource 
+  autocomplete :banca, :nome
+  
+
+  def check_banca
+    banca ||= Banca.find_by_nome(params[:concurso][:banca])
+    if banca.blank? and !params[:concurso][:banca].blank?
+      banca = Banca.create(:nome => params[:concurso][:banca])
+    end
+    unless banca.blank?
+      params[:concurso][:banca_id] = banca.id
+    end
+    params[:concurso].delete "banca"
+    puts params
+  end
 
   # GET /concursos
   # GET /concursos.json

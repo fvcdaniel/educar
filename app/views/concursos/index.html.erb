@@ -10,6 +10,7 @@
       <th><%= model_class.human_attribute_name(:ano) %></th>
       <th><%= model_class.human_attribute_name(:cargo) %></th>
       <th><%= model_class.human_attribute_name(:edital) %></th>
+      <th><%= model_class.human_attribute_name(:prova) %></th>
       <th><%= model_class.human_attribute_name(:gabarito) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -21,8 +22,9 @@
         <td><%= concurso.nome %></td>
         <td><%= concurso.ano %></td>
         <td><%= concurso.cargo %></td>
-        <td><%= concurso.edital %></td>
-        <td><%= concurso.gabarito %></td>
+        <td><%= link_to_unless concurso.edital.url.blank?, (concurso.edital.url.blank?) ? '' : 'EDITAL', concurso.edital.url %></td>
+        <td><%= link_to_unless concurso.prova.url.blank?, (concurso.prova.url.blank?) ? '' : 'PROVA', concurso.prova.url %></td>
+        <td><%= link_to_unless concurso.gabarito.url.blank?, (concurso.gabarito.url.blank?) ? '' : 'GABARITO', concurso.gabarito.url %></td>
         <td>
           <%= link_to image_tag('edit.png'), edit_concurso_path(concurso), :class => 'quick-edit',
                   :title => 'editar' %>

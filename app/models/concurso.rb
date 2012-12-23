@@ -13,14 +13,27 @@
 #
 
 class Concurso < ActiveRecord::Base
-  attr_accessible :ano, :cargo, :edital, :gabarito, :nome
+  attr_accessible :ano, :cargo, :edital, :prova, :gabarito, :nome, :banca_id, :banca
 
   validates_presence_of :nome, :ano, :cargo
 
   has_many :questoes, :dependent => :destroy
+  belongs_to :banca
+
+  mount_uploader :edital, PdfUploader
+  mount_uploader :prova, PdfUploader
+  mount_uploader :gabarito, PdfUploader
 
   def name
   	"#{self.nome} - #{self.ano} - #{self.cargo}".upcase
   end
+
+  def nome=(val)
+    self[:nome] = val.upcase
+  end
   
+  def cargo=(val)
+    self[:cargo] = val.upcase
+  end
+
 end

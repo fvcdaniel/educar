@@ -6,6 +6,9 @@ Educar::Application.routes.draw do
   get "questoes/dynamic_add_item", :controller => 'questoes', :action => 'dynamic_add_item'
   resources :questoes
 
+  resources :concursos do
+    get :autocomplete_banca_nome, :on => :collection
+  end
   resources :concursos
 
   resources :assuntos

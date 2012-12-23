@@ -6,12 +6,16 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
   <dd><%= @concurso.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:banca) %>:</strong></dt>
+  <dd><%= @concurso.banca.nome if @concurso.banca %></dd>
   <dt><strong><%= model_class.human_attribute_name(:ano) %>:</strong></dt>
   <dd><%= @concurso.ano %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cargo) %>:</strong></dt>
   <dd><%= @concurso.cargo %></dd>
   <dt><strong><%= model_class.human_attribute_name(:edital) %>:</strong></dt>
   <dd><%= @concurso.edital %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:prova) %>:</strong></dt>
+  <dd><%= @concurso.prova %></dd>
   <dt><strong><%= model_class.human_attribute_name(:gabarito) %>:</strong></dt>
   <dd><%= @concurso.gabarito %></dd>
 </dl>
