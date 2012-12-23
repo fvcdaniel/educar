@@ -7,6 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:banca) %></th>
       <th><%= model_class.human_attribute_name(:ano) %></th>
       <th><%= model_class.human_attribute_name(:cargo) %></th>
       <th><%= model_class.human_attribute_name(:edital) %></th>
@@ -20,6 +21,7 @@
       <tr>
         <td><%= link_to concurso.id, concurso_path(concurso) %></td>
         <td><%= concurso.nome %></td>
+        <td><%= concurso.banca %></td>
         <td><%= concurso.ano %></td>
         <td><%= concurso.cargo %></td>
         <td><%= link_to_unless concurso.edital.url.blank?, (concurso.edital.url.blank?) ? '' : 'EDITAL', concurso.edital.url %></td>
