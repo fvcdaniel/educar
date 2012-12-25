@@ -74,7 +74,7 @@ class HomeController < ApplicationController
       comment = Comment.find(params[:comment_id])
     end
     if(params[:op] == 'D')
-      if(@questao.user == current_user and comment.questao == @questao)
+      if(comment.user == current_user and comment.questao == @questao)
         comment.destroy
       end
     end
