@@ -30,5 +30,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :questoes, :dependent => :destroy
   has_many :respostas, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   
 end

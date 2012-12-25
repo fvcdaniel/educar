@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if comment.blank?
       return redirect_to root_url, :alert => 'Acesso negado!'
     end  
-    if current_user != comment.questao.user
+    if current_user != comment.user
       return redirect_to root_url, :alert => 'Acesso negado!'
     end
   end
@@ -55,6 +55,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save

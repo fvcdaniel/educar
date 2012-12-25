@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224180107) do
+ActiveRecord::Schema.define(:version => 20121225224919) do
 
   create_table "assuntos", :force => true do |t|
     t.string   "nome"
@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(:version => 20121224180107) do
     t.datetime "updated_at", :null => false
     t.string   "ancestry"
     t.integer  "questao_id"
+    t.integer  "user_id"
   end
 
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
   add_index "comments", ["questao_id"], :name => "index_comments_on_questao_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "concursos", :force => true do |t|
     t.string   "nome"

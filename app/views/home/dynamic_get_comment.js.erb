@@ -5,7 +5,7 @@ $('#<%=@questao.id%>_comment').empty();
 	li=document.createElement('li');
 	$(li).addClass('item_comment').appendTo($("#<%=@questao.id%>_comment"));
 
-	<% if current_user == @questao.user %>
+	<% if current_user == comment.user %>
 		button=document.createElement('button');
 		$(button).attr('type', 'submit').attr('questao_id','<%= @questao.id %>').attr('name','button').text('Deletar').attr('comment_id', '<%= comment.id %>').addClass('btn btn-mini comment_delete').appendTo(li).attr('onClick','get_comments(this)');
 	<% end %>
