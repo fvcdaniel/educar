@@ -219,6 +219,7 @@ pt-BR:
         other: 'Questões'
       item: 'Item'
       assunto: 'Assunto'
+      comment: 'Comentário'
     attributes:
       questao:
         materia: 'Matéria'

@@ -66,4 +66,22 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
+  def dynamic_get_comment
+
+    @questao = Questao.find(params[:questao_id])
+    unless params[:comment_id].blank?
+      comment = Comment.find(params[:comment_id])
+    end
+    if(params[:op] == 'D')
+      if(@questao.user == current_user and comment.questao == @questao)
+        comment.destroy
+      end
+    end
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
 end

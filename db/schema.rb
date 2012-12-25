@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223024603) do
+ActiveRecord::Schema.define(:version => 20121224180107) do
 
   create_table "assuntos", :force => true do |t|
     t.string   "nome"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(:version => 20121223024603) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "comments", :force => true do |t|
+    t.text     "texto"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "ancestry"
+    t.integer  "questao_id"
+  end
+
+  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
+  add_index "comments", ["questao_id"], :name => "index_comments_on_questao_id"
 
   create_table "concursos", :force => true do |t|
     t.string   "nome"

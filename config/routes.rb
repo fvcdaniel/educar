@@ -1,4 +1,7 @@
 Educar::Application.routes.draw do
+
+  resources :comments
+
   resources :itens
 
   get "questoes/dynamic_select_assuntos/:id", :controller => 'questoes', :action => 'dynamic_select_assuntos'
@@ -17,6 +20,7 @@ Educar::Application.routes.draw do
 
   devise_for :users
 
+  post "home/dynamic_get_comment", :controller => "home", :action => "dynamic_get_comment"
   match 'home/resolvendo'
   #match 'home/dynamic_select_item/:id' => 'home#dynamic_select_item'
   get "home/dynamic_select_item/:id", :controller => 'home', :action => 'dynamic_select_item'

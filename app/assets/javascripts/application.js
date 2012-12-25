@@ -16,6 +16,8 @@
 //= require_tree .
 //= require jquery-ui
 //= require autocomplete-rails
+//= require jquery.ui.all
+//= require jquery.modal
 
 
 jQuery(document).ready(function() {
@@ -46,7 +48,7 @@ jQuery(document).ready(function() {
 	jQuery('#add_item').click(function() {
 		var questao_id = $('#questao_id').val();
 		vars = new Object();
-		vars.item_desc = tinyMCE.get('questao_item').getContent();;
+		vars.item_desc = tinyMCE.get('questao_item').getContent();
 		vars.questao_id = $('#questao_id').val();;
 		if(vars.item_desc == ''){
 			alert('não pode ficar em branco')
@@ -109,3 +111,29 @@ function delete_item_temp(index){
 	return false;
 }
 
+$('#new_comment').live("ajax:complete", function(event,xhr,status){
+	$(this).children('.text').children('.controls').children('textarea').val('');
+    var questao_id = $(this).children('.hidden').children('.controls').children('input').val();
+    $.ajax({
+			type: "POST",
+			url: "http://"+location.host+"/home/dynamic_get_comment?op=R&questao_id="+questao_id,
+			data: '',
+			dataType: "script"
+		});
+});
+
+function get_comments(elem){
+	vars = new Object();
+    vars.questao_id = $(elem).attr('questao_id');
+    vars.comment_id = $(elem).attr('comment_id');
+    vars.op = "D";
+    if(confirm("Você tem certeza?")){
+    	$.ajax({
+			type: "POST",
+			url: "http://"+location.host+"/home/dynamic_get_comment",
+			data: vars,
+			dataType: "script"
+		});
+    }
+    return false;
+}
