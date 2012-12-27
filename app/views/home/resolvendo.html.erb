@@ -12,7 +12,7 @@
 
 				<%unless questao.itens.blank? %>
 					<ul class="ul-questao">
-						<% questao.itens.each.with_index do |item, index|%>
+						<% questao.itens.sort.each.with_index do |item, index|%>
 							<li id="<%=questao.id%>_item_questao_<%=value_item(index)%>" class="item">
 								<% if questao.tipo == 'M' %>
 									<%= radio_button_tag "#{questao.id}_item_questao", value_item(index), false, :class => "item-radio", :style => 'margin: 0px' %>
