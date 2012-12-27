@@ -17,7 +17,7 @@
 </dl>
 
 <dl class="dl-horizontal">
-  <% @questao.itens.each.with_index do |item, index| %>
+  <% @questao.itens.sort.each.with_index do |item, index| %>
     <dt><strong>Item <%= value_item index %>:</strong></dt>
     <dd><%= (link_to (raw item.desc), item_path(item)) %></dd>
   <% end %>
