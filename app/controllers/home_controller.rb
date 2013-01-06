@@ -84,4 +84,15 @@ class HomeController < ApplicationController
     end
 
   end
+
+  def dynamic_add_comment
+    @questao = Questao.find(params[:questao_id])
+    comment = params[:comment]
+    Comment.create!(:texto => comment, :questao_id => @questao.id, :user_id => current_user)
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
 end

@@ -65,6 +65,42 @@ jQuery(document).ready(function() {
 		return false;
 	}); 
 
+	jQuery('.ajax_comment').submit(function() {
+		
+		var id_texto = $(this).attr('id') + '_texto';
+		var questao_id = $('#' + $(this).attr('id') + '_questao_id').val();
+
+		var content = tinyMCE.get(id_texto).getContent();
+		vars = new Object();
+		vars.comment = content;
+
+		vars.questao_id = questao_id;
+
+		if(vars.comment == ''){
+			alert('não pode ficar em branco');
+		}else{
+			$.ajax({
+				type: "POST",
+				url: "http://"+location.host+"/home/dynamic_add_comment?questao_id="+questao_id,
+				data: vars,
+				dataType: "script"
+			});
+			tinyMCE.get(id_texto).setContent('');
+		}
+		return false;
+	}); 
+	
+	jQuery('#button_hide').click(function() {
+		var display = $("#hider").css('display');
+		if(display == 'none'){
+			$(this).children('i').attr('class', ' icon-chevron-up');
+			$("#hider").show("slow");
+		}else{
+			$(this).children('i').attr('class', ' icon-chevron-down');
+			$("#hider").hide("slow");	
+		}
+	});
+
 });
 
 function ajaxResp(questao){
@@ -112,6 +148,7 @@ function delete_item_temp(index){
 }
 
 $('#new_comment').live("ajax:complete", function(event,xhr,status){
+	alert('caution');
 	$(this).children('.text').children('.controls').children('textarea').val('');
     var questao_id = $(this).children('.hidden').children('.controls').children('input').val();
     $.ajax({
@@ -137,3 +174,4 @@ function get_comments(elem){
     }
     return false;
 }
+

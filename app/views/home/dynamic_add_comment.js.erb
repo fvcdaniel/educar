@@ -20,7 +20,7 @@ $('#<%=@questao.id%>_comment').empty();
 	$(div2).addClass('created_at').appendTo(div1).text('<%= comment.created_at.strftime("%B %d, %Y") %>');
 
 	div3=document.createElement('div');
-	$(div3).addClass('comment_content').appendTo(div1).text('<%= raw comment.texto %>');
+	$(div3).addClass('comment_content').appendTo(div1).html('<%= raw comment.texto %>');
 
 	br=document.createElement('br');
 	$(br).attr('clear','all').appendTo(li);

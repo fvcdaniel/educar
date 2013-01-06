@@ -22,38 +22,51 @@
 								<%= raw item_desc(item, index) %>
 							</li>
 						<% end %>
-						<div id="<%=questao.id%>_comment">
-							<% questao.comments.each.with_index do |comment, index|%>
-								<li id="<%=questao.id%>_comment_questao_<%= index %>" class="item_comment">
-									<% if current_user == comment.user %>
-									  <%= button_tag "Deletar", :questao_id => questao.id, :comment_id => comment.id, :class => 'btn btn-mini comment_delete', :onclick => 'get_comments(this)' %>
-									<% end %>
-									<div class="comment" style="float:left;">
-										<%= image_tag 'imagem_perfil.png', :size => '46x50', :class => 'imagem_comment' %>
-										<div class="created_at"> <%= comment.created_at.strftime("%B %d, %Y") %> </div>
-										<div class="comment_content">
-											<%= raw comment.texto %>
-										</div>
-									</div>
-									<br clear="all">
-								</li>
-							<% end %>
-						</div>
-						<% if user_signed_in? %>
-							<li class="item" style="margin:10px;">
-									 
-								<div class="">
-									<%= simple_form_for Comment.new(:questao_id => questao.id), :html => { :class => 'form-vertical' }, :remote => true do |f| %>
-										<%= f.input :texto, :as => :text, :input_html => {:rows => 5, :cols => 70}, :hint => 'coloque aqui o comentário...', :label=> false %>
-										<%= f.input :questao_id, :as => 'hidden' %>
-										<%= f.button :submit, :class => 'btn' %>
-									<% end %>
-						  		</div>
-							</li>
-						<% end %>
 						
 						<div class="form-actions">
 							<input type="submit" value="Responder" name="commit" class="btn" , onClick="javascript:ajaxResp<%= questao.tipo == 'M' ? '' : '2' %>(<%=questao.id%>);" >
+							<button class='btn ' id='button_hide'><i class="icon-white icon-chevron-down"></i> Comentários</button>
+						</div>
+
+						<div id='hider' style="display: none;">
+
+							<div id="<%=questao.id%>_comment">
+								<% questao.comments.each.with_index do |comment, index|%>
+									<li id="<%=questao.id%>_comment_questao_<%= index %>" class="item_comment">
+										<% if current_user == comment.user %>
+										  <%= button_tag "Deletar", :questao_id => questao.id, :comment_id => comment.id, :class => 'btn btn-mini comment_delete', :onclick => 'get_comments(this)' %>
+										<% end %>
+										<div class="comment" style="float:left;">
+											<%= image_tag 'imagem_perfil.png', :size => '46x50', :class => 'imagem_comment' %>
+											<div class="created_at"> <%= comment.created_at.strftime("%B %d, %Y") %> </div>
+											<div class="comment_content">
+												<%= raw comment.texto %>
+											</div>
+										</div>
+										<br clear="all">
+									</li>
+								<% end %>
+								<% if questao.comments.blank? %>
+									<li id="<%=questao.id%>_comment_questao_<%= index %>" class="item_comment">
+										Nenhum comentário ainda...
+									</li>	
+								<% end %>
+							</div>
+
+							<% if user_signed_in? %>
+								<li class="item" style="margin:10px;">
+										 
+									<div class="">
+										<%= simple_form_for questao.id.to_s+"_comment", :url => '/home/dynamic_add_comment', :html => { :class => 'form-vertical ajax_comment', :id => questao.id.to_s+"_comment" }, :method => 'post' do |f|%>
+										  <%= f.input :texto,:id => 'teste', :as => :text, :input_html => {:rows => 15, :cols => 70, :class => 'tinymce'}, :hint => 'coloque aqui o comentário...', :label => false %>
+										  <%= f.input :questao_id, :as => :hidden, :input_html => { :value => questao.id } %>
+										  <%= f.submit 'Criar Comentário', :class => 'btn' %>
+										<% end %>
+							  		</div>
+								</li>
+							<% end %>
+						</div>
+
 					</ul>
 				<% else %>
 					<p> Nenhum item cadastrado para esta questão... </p>
