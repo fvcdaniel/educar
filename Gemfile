@@ -18,6 +18,7 @@ gem 'rails3-jquery-autocomplete'
 gem "rmagick"
 gem "carrierwave"
 gem 'ancestry'
+gem 'newrelic_rpm'
 
 group :development do
 end
