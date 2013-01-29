@@ -15,7 +15,7 @@ gem 'exception_notification'
 gem 'brstring'
 gem 'tinymce-rails'
 gem 'rails3-jquery-autocomplete'
-gem "rmagick"
+gem "rmagick", "2.12.2"
 gem "carrierwave"
 gem 'ancestry'
 gem 'newrelic_rpm'
