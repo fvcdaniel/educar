@@ -46,6 +46,9 @@ class HomeController < ApplicationController
   	
     if @questao.tipo == 'M'
       @resp = params[:resp]
+      if @resp.size > 1
+        @resp = ''
+      end
     elsif @questao.tipo == 'C'
       @resp_tmp = params[:resp].split(',').map{|a| a.to_i}
       @gab_tmp = (0...@questao.itens.count).to_a - @resp_tmp

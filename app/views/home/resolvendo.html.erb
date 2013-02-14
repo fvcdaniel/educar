@@ -2,7 +2,7 @@
 <%= tinymce_assets %>
 <%= tinymce %>
 <div class="row-fluid">
-	<div class="span8 offset1">
+	<div class="span9" style="margin-left: 3.54701%">
 		<%unless @questoes.blank? %>
 	
 			<% @questoes.each.with_index do |questao, index| %>
@@ -24,11 +24,14 @@
 						<% end %>
 						
 						<div class="form-actions">
-							<input type="submit" value="Responder" name="commit" class="btn" , onClick="javascript:ajaxResp<%= questao.tipo == 'M' ? '' : '2' %>(<%=questao.id%>);" >
-							<button class='btn ' id='button_hide'><i class="icon-white icon-chevron-down"></i> Comentários</button>
+							<input type="submit" value="Responder" name="commit" class="btn" onClick="<%= ajaxResp(questao) %>"></input>
+								<button class='btn' id='button_hide<%=questao.id%>' onClick="buttonComments(<%=questao.id%>)" >
+									<i class="icon-white icon-chevron-down"></i> 
+									Comentários
+								</button>
 						</div>
 
-						<div id='hider' style="display: none;">
+						<div id='hider<%= questao.id %>' style="display: none;">
 
 							<div id="<%=questao.id%>_comment">
 								<% questao.comments.each.with_index do |comment, index|%>

@@ -89,21 +89,21 @@ jQuery(document).ready(function() {
 		}
 		return false;
 	}); 
-	
-	jQuery('#button_hide').click(function() {
-		var display = $("#hider").css('display');
-		if(display == 'none'){
-			$(this).children('i').attr('class', ' icon-chevron-up');
-			$("#hider").show("slow");
-		}else{
-			$(this).children('i').attr('class', ' icon-chevron-down');
-			$("#hider").hide("slow");	
-		}
-	});
 
 });
 
-function ajaxResp(questao){
+function buttonComments(questao_id){
+	var display = $("#hider"+questao_id).css('display');
+	if(display == 'none'){
+		$('#button_hide'+questao_id).children('i').attr('class', ' icon-chevron-up');
+		$("#hider"+questao_id).show("slow");
+	}else{
+		$('#button_hide'+questao_id).children('i').attr('class', ' icon-chevron-down');
+		$("#hider"+questao_id).hide("slow");	
+	}
+}
+
+function ajaxRespM(questao){
 
 	var start_time = $('#start_time').val();
 	var str_data = "input[name='"+questao+"_item_questao']:checked"

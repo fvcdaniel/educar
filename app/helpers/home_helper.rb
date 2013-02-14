@@ -14,4 +14,12 @@ module HomeHelper
 		end
 	end
 
+	def ajaxResp(questao)
+		if questao.tipo == 'M'
+			'javascript:ajaxRespM('+questao.id.to_s+');'
+		else
+			'javascript:ajaxRespA('+questao.id.to_s+');'
+		end
+	end
+
 end
