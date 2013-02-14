@@ -276,7 +276,6 @@ DEPENDENCIES
   jquery-ui-rails
   launchy
   newrelic_rpm
-  omniauth
   omniauth-facebook
   pg
   rails (= 3.2.8)

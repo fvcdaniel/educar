@@ -19,7 +19,6 @@ gem "rmagick", "2.12.2"
 gem "carrierwave"
 gem 'ancestry'
 gem 'newrelic_rpm'
-gem 'omniauth'
 gem 'omniauth-facebook'
 
 group :development do
