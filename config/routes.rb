@@ -18,10 +18,9 @@ Educar::Application.routes.draw do
 
   resources :materias
 
-  post "home/dynamic_add_comment", :controller => "home", :action => "dynamic_add_comment"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  
+  post "home/dynamic_add_comment", :controller => "home", :action => "dynamic_add_comment"
   post "home/dynamic_get_comment", :controller => "home", :action => "dynamic_get_comment"
   match 'home/resolvendo'
   #match 'home/dynamic_select_item/:id' => 'home#dynamic_select_item'

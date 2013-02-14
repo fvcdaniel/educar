@@ -1,3 +1,4 @@
+require "omniauth-facebook"
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -15,8 +16,9 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
-  require "omniauth-facebook"
-  config.omniauth :facebook, "288824561243414", "ba9853831678de2163217b84e3f4a7ab"
+  #config.omniauth :facebook, "288824561243414", "ba9853831678de2163217b84e3f4a7ab", :strategy_class => OmniAuth::Strategies::Facebook
+  config.omniauth :facebook, "288824561243414", "ba9853831678de2163217b84e3f4a7ab",
+      {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
 
   # ==> Configuration for any authentication mechanism

@@ -32,15 +32,6 @@ class User < ActiveRecord::Base
   has_many :respostas, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-    data = ActiveSupport::JSON.decode(access_token.get('https://graph.facebook.com/me?'))
-    if user = User.find_by_email(data["email"])
-      user
-    else # Create an user with a stub password.
-      User.create!(:email => data["email"], :password => Devise.friendly_token[0,20])
-    end
-  end
-
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
