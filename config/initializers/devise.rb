@@ -15,6 +15,10 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
+  require "omniauth-facebook"
+  config.omniauth :facebook, "288824561243414", "ba9853831678de2163217b84e3f4a7ab"
+
+
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -229,4 +233,11 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  #config.oauth :facebook, '288824561243414', 'ba9853831678de2163217b84e3f4a7ab',
+  #:site => 'https://graph.facebook.com/',
+  #:authorize_path => '/oauth/authorize',
+  #:access_token_path => '/oauth/access_token',
+  #:scope => %w(email)
+
 end
