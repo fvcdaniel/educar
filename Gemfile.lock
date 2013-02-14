@@ -1,13 +1,3 @@
-GIT
-  remote: http://github.com/plataformatec/devise.git
-  revision: 1b2460171eeb86070cd65b5b8fce365fc8d0dc11
-  specs:
-    devise (2.2.3)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -69,6 +59,11 @@ GEM
       execjs
     coffee-script-source (1.3.3)
     commonjs (0.2.6)
+    devise (2.1.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.0)
@@ -270,7 +265,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 3.2.1)
-  devise!
+  devise
   exception_notification
   factory_girl_rails
   growl (= 1.0.3)
