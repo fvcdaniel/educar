@@ -20,6 +20,10 @@ Educar::Application.routes.draw do
 
   devise_for :users
 
+  devise_scope :user do
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  end
+
   post "home/dynamic_add_comment", :controller => "home", :action => "dynamic_add_comment"
   post "home/dynamic_get_comment", :controller => "home", :action => "dynamic_get_comment"
   match 'home/resolvendo'
