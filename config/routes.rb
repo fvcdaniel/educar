@@ -18,9 +18,6 @@ Educar::Application.routes.draw do
 
   resources :materias
 
-  devise_scope :user do
-    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
-  end
   post "home/dynamic_add_comment", :controller => "home", :action => "dynamic_add_comment"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
