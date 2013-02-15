@@ -9,6 +9,7 @@
 
   <div class="form-actions">
     <%= f.button :submit, "Entrar" %>
+    <%= link_to image_tag('facebook_64.png'), user_omniauth_authorize_path(:facebook), :style => 'margin-left:40%;' %>
   </div>
 <% end %>
 
