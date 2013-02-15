@@ -6,10 +6,10 @@ set :rvm_ruby_string, '1.9.3-p194'
 require 'bundler/capistrano'
 
 # main details
-set :application, "meuimovelpb.com"
-role :web, "meuimovelpb.com"
-role :app, "meuimovelpb.com"
-role :db,  "meuimovelpb.com", :primary => true
+set :application, "aprenderconcursos.com"
+role :web, "aprenderconcursos.com"
+role :app, "aprenderconcursos.com"
+role :db,  "aprenderconcursos.com", :primary => true
 
 # server details
 default_run_options[:pty] = true
