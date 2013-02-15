@@ -4,6 +4,7 @@ $('#<%=@questao.id%>_comment').empty();
 
 	li=document.createElement('li');
 	$(li).addClass('item_comment').appendTo($("#<%=@questao.id%>_comment"));
+	$(li).addClass('item_comment_<%=comment.id%>');
 
 	<% if current_user == comment.user %>
 		button=document.createElement('button');

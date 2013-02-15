@@ -35,7 +35,7 @@
 
 							<div id="<%=questao.id%>_comment">
 								<% questao.comments.each.with_index do |comment, index|%>
-									<li id="<%=questao.id%>_comment_questao_<%= index %>" class="item_comment">
+									<li id="<%=questao.id%>_comment_questao_<%= index %>" class="item_comment item_comment_<%=comment.id%>">
 										<% if current_user == comment.user %>
 										  <%= button_tag "Deletar", :questao_id => questao.id, :comment_id => comment.id, :class => 'btn btn-mini comment_delete', :onclick => 'get_comments(this)' %>
 										<% end %>

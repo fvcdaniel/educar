@@ -1,28 +1,36 @@
-$('#<%=@questao.id%>_comment').empty();
 
-<% @questao.comments.each.with_index do |comment, index|%>
+<% if @action == 'D' %>
+	$('.item_comment_<%=@comment_id%>').remove();
+<% else %>
+	
+	$('#<%=@questao.id%>_comment').empty();
 
-	li=document.createElement('li');
-	$(li).addClass('item_comment').appendTo($("#<%=@questao.id%>_comment"));
+	<% @questao.comments.each.with_index do |comment, index|%>
 
-	<% if current_user == comment.user %>
-		button=document.createElement('button');
-		$(button).attr('type', 'submit').attr('questao_id','<%= @questao.id %>').attr('name','button').text('Deletar').attr('comment_id', '<%= comment.id %>').addClass('btn btn-mini comment_delete').appendTo(li).attr('onClick','get_comments(this)');
+		li=document.createElement('li');
+		$(li).addClass('item_comment').appendTo($("#<%=@questao.id%>_comment"));
+		$(li).addClass('item_comment_<%=comment.id%>');
+
+		<% if current_user == comment.user %>
+			button=document.createElement('button');
+			$(button).attr('type', 'submit').attr('questao_id','<%= @questao.id %>').attr('name','button').text('Deletar').attr('comment_id', '<%= comment.id %>').addClass('btn btn-mini comment_delete').appendTo(li).attr('onClick','get_comments(this)');
+		<% end %>
+
+		div1=document.createElement('div');
+		$(div1).addClass('comment').appendTo(li);
+
+		img=document.createElement('img');
+		$(img).addClass('imagem_comment').attr('alt', 'Imagem_perfil').attr('height', '50').attr('width','46').attr('src','/assets/imagem_perfil.png').appendTo(div1);
+
+		div2=document.createElement('div');
+		$(div2).addClass('created_at').appendTo(div1).text('<%= comment.created_at.strftime("%B %d, %Y") %>');
+
+		div3=document.createElement('div');
+		$(div3).addClass('comment_content').appendTo(div1).text('<%= raw comment.texto %>');
+
+		br=document.createElement('br');
+		$(br).attr('clear','all').appendTo(li);
+
 	<% end %>
-
-	div1=document.createElement('div');
-	$(div1).addClass('comment').appendTo(li);
-
-	img=document.createElement('img');
-	$(img).addClass('imagem_comment').attr('alt', 'Imagem_perfil').attr('height', '50').attr('width','46').attr('src','/assets/imagem_perfil.png').appendTo(div1);
-
-	div2=document.createElement('div');
-	$(div2).addClass('created_at').appendTo(div1).text('<%= comment.created_at.strftime("%B %d, %Y") %>');
-
-	div3=document.createElement('div');
-	$(div3).addClass('comment_content').appendTo(div1).text('<%= raw comment.texto %>');
-
-	br=document.createElement('br');
-	$(br).attr('clear','all').appendTo(li);
 
 <% end %>

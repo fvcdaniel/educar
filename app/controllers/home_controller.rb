@@ -72,13 +72,16 @@ class HomeController < ApplicationController
 
   def dynamic_get_comment
 
+    @action = params[:op]
+
     @questao = Questao.find(params[:questao_id])
     unless params[:comment_id].blank?
       comment = Comment.find(params[:comment_id])
     end
-    if(params[:op] == 'D')
+    if(@action == 'D')
       if(comment.user == current_user and comment.questao == @questao)
         comment.destroy
+        @comment_id = params[:comment_id]
       end
     end
 
@@ -91,7 +94,7 @@ class HomeController < ApplicationController
   def dynamic_add_comment
     @questao = Questao.find(params[:questao_id])
     comment = params[:comment]
-    Comment.create!(:texto => comment, :questao_id => @questao.id, :user_id => current_user)
+    @comment_id = Comment.create!(:texto => comment, :questao_id => @questao.id, :user_id => current_user.id).id
     respond_to do |format|
       format.js
     end
