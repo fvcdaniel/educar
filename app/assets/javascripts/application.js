@@ -81,7 +81,7 @@ jQuery(document).ready(function() {
 		}else{
 			$.ajax({
 				type: "POST",
-				url: "http://"+location.host+"/home/dynamic_add_comment?questao_id="+questao_id,
+				url: window.location.protocol+"//"+location.host+"/home/dynamic_add_comment?questao_id="+questao_id,
 				data: vars,
 				dataType: "script"
 			});
