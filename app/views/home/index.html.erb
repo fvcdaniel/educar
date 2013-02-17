@@ -1,5 +1,16 @@
 <% provide(:class, 'blank') if params[:materia_id].blank? %>
 <% unless params[:materia_id].blank? %>
+	
+	<h1><%= "#{@materia.nome.upcase} - "%>CONCURSOS</h1>
+
+		<%unless @concursos.blank? %>
+			<% @concursos.each do |concurso| %>
+				<a class="assunto concurso" href='#'> 
+					<%= concurso.nome.upcase + " - " + concurso.cargo.upcase %>
+				</a>
+		    <% end %>
+	    <% end %>
+
 	<h1><%= "#{@materia.nome.upcase} - "%>ASSUNTOS</h1>
 
 	    <ul>
@@ -14,14 +25,10 @@
 	    	<% end %>
 	    </ul>
 
-	<h1><%= "#{@materia.nome.upcase} - "%>CONCURSOS</h1>
+<% else %>
 
-		<%unless @concursos.blank? %>
-			<% @concursos.each do |concurso| %>
-				<a class="assunto concurso" href='#'> 
-					<%= concurso.nome.upcase + " - " + concurso.cargo.upcase %>
-				</a>
-		    <% end %>
-	    <% end %>
+	<div class='offset2' style='margin-top:25px;'>
+		<%= image_tag('ac.png') %>
+	</div>
 
 <% end %>

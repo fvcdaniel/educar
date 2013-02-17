@@ -12,6 +12,7 @@
 #  tipo        :string(255)      default("M")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer
 #
 
 class Questao < ActiveRecord::Base
@@ -42,12 +43,12 @@ class Questao < ActiveRecord::Base
     if self.tipo == 'M'
       if self.questao_itens.blank? or self.questao_itens.size == 5
         unless ['A', 'B', 'C', 'D', 'E'].include?(self.gabarito) 
-          errors.add(:gabarito, "não é válido")
+          errors.add(:gabarito, (I18n.t :invalid, :scope => [:activerecord, :errors, :messages]))
         end
       else
         itens = ('A'..'Z').collect{|a| a}.first(self.questao_itens.size)
         unless itens.include?(self.gabarito) 
-          errors.add(:gabarito, "não é válido")
+          errors.add(:gabarito, (I18n.t :invalid, :scope => [:activerecord, :errors, :messages]))
         end
       end
       
@@ -56,16 +57,16 @@ class Questao < ActiveRecord::Base
       arrtipos = ('A'..'Z').select{|a| !'CE'.include? a }
       self.gabarito.chars.each do |g|
         if arrtipos.include? g
-          errors.add(:gabarito, "não é válido")
+          errors.add(:gabarito, (I18n.t :invalid, :scope => [:activerecord, :errors, :messages]))
         end
       end
 
       if self.questao_itens.size != self.gabarito.size
-        errors.add(:gabarito, "não é válido")
+        errors.add(:gabarito, (I18n.t :invalid, :scope => [:activerecord, :errors, :messages]))
       end
 
     else
-      errors.add(:gabarito, "não é válido")
+      errors.add(:gabarito, (I18n.t :invalid, :scope => [:activerecord, :errors, :messages]))
     end
 
   end
@@ -73,7 +74,7 @@ class Questao < ActiveRecord::Base
   def assunto_belongs_to_materia_id
     if self.assunto_id
       unless Assunto.find(self.assunto_id).materia_id == self.materia_id 
-        errors.add(:assunto, "Assunto tem que pertencer à matéria cadastrada!")
+        errors.add(:assunto, (I18n.t :invalid_assunto_reference, :scope => [:activerecord, :errors, :messages]))
       end
     end
   end

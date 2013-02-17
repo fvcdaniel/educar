@@ -276,8 +276,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy
   newrelic_rpm
-  omniauth
-  omniauth-facebook (= 1.4.0)
+  omniauth-facebook
   pg
   rails (= 3.2.8)
   rails3-jquery-autocomplete

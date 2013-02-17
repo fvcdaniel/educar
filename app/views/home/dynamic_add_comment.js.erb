@@ -18,7 +18,7 @@ $('#<%=@questao.id%>_comment').empty();
 	$(img).addClass('imagem_comment').attr('alt', 'Imagem_perfil').attr('height', '50').attr('width','46').attr('src','/assets/imagem_perfil.png').appendTo(div1);
 
 	div2=document.createElement('div');
-	$(div2).addClass('created_at').appendTo(div1).text('<%= comment.created_at.strftime("%B %d, %Y") %>');
+	$(div2).addClass('created_at').appendTo(div1).text('<%= I18n.l comment.created_at, :format => :custom, :locale => "pt-BR" %>');
 
 	div3=document.createElement('div');
 	$(div3).addClass('comment_content').appendTo(div1).html('<%= raw comment.texto %>');

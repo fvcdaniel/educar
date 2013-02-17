@@ -10,6 +10,8 @@
 #  gabarito   :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  banca_id   :integer
+#  prova      :string(255)
 #
 
 class Concurso < ActiveRecord::Base
