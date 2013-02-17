@@ -2,7 +2,7 @@
 module HomeHelper
 
 	def questao_texto (questao, index)
-		"<div class=\"span12\" style=\"background-color:#F9F9F9; padding-left:10px;\"> #{index+1} <div style=\"padding-left:35px; padding-bottom:10px; \"> #{questao.texto} </div> </div>"
+		"<div class=\"span12\" style=\"background-color:#F9F9F9; padding-left:10px;\"> #{index+1} <div style=\"padding-left:25px; padding-right:20px; padding-bottom:10px; \"> #{questao.texto} </div> </div>"
 	end
 
 	def item_desc(item, index)
