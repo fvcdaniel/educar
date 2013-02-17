@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
 		var data2 = $("input[name='item_questao']:checked").val();
 		$.ajax({
 			type: "GET",
-			 url: "http://"+location.host+"/home/dynamic_select_item/"+data1+"?resp="+data2,
+			 url: window.location.protocol+"//"+location.host+"/home/dynamic_select_item/"+data1+"?resp="+data2,
 			data: data1,
 			dataType: "script"
 		});
@@ -39,7 +39,7 @@ jQuery(document).ready(function() {
 		var data = $('#questao_materia_id').val();
 		$.ajax({
 			type: "GET",
-			 url: "http://"+location.host+"/questoes/dynamic_select_assuntos/"+data,
+			 url: window.location.protocol+"//"+location.host+"/questoes/dynamic_select_assuntos/"+data,
 			data: data,
 			dataType: "script"
 		});
@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
 		}else{
 			$.ajax({
 				type: "GET",
-				url: "http://"+location.host+"/questoes/dynamic_add_item?questao_id="+questao_id,
+				url: window.location.protocol+"//"+location.host+"/questoes/dynamic_add_item?questao_id="+questao_id,
 				data: vars,
 				dataType: "script"
 			});
@@ -111,7 +111,7 @@ function ajaxRespM(questao){
 
 	$.ajax({
 		type: "GET",
-		 url: "http://"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+data+"&start_time="+start_time,
+		 url: window.location.protocol+"//"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+data+"&start_time="+start_time,
 		data: questao,
 		dataType: "script"
 	});
@@ -127,7 +127,7 @@ function ajaxResp2(questao){
 	});
 	$.ajax({
 		type: "GET",
-		 url: "http://"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+checked+"&start_time="+start_time,
+		 url: window.location.protocol+"//"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+checked+"&start_time="+start_time,
 		data: questao,
 		dataType: "script"
 	});
@@ -139,7 +139,7 @@ function delete_item_temp(index){
 		var questao_id = $('#questao_id').val();
 		$.ajax({
 			type: "GET",
-			url: "http://"+location.host+"/questoes/dynamic_add_item?op=D&item_index="+index+"&questao_id="+questao_id,
+			url: window.location.protocol+"//"+location.host+"/questoes/dynamic_add_item?op=D&item_index="+index+"&questao_id="+questao_id,
 			data: '',
 			dataType: "script"
 		});
@@ -153,7 +153,7 @@ $('#new_comment').live("ajax:complete", function(event,xhr,status){
     var questao_id = $(this).children('.hidden').children('.controls').children('input').val();
     $.ajax({
 			type: "POST",
-			url: "http://"+location.host+"/home/dynamic_get_comment?op=R&questao_id="+questao_id,
+			url: window.location.protocol+"//"+location.host+"/home/dynamic_get_comment?op=R&questao_id="+questao_id,
 			data: '',
 			dataType: "script"
 		});
@@ -167,7 +167,7 @@ function get_comments(elem){
     if(confirm("Você tem certeza?")){
     	$.ajax({
 			type: "POST",
-			url: "http://"+location.host+"/home/dynamic_get_comment",
+			url: window.location.protocol+"//"+location.host+"/home/dynamic_get_comment",
 			data: vars,
 			dataType: "script"
 		});
