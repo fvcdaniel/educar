@@ -53,7 +53,6 @@ after 'deploy:update_code', 'deploy:symlink_shared'
 after :deploy, 'deploy:database'
 namespace :deploy do
     task :database, :roles => :app do
-        run "bundle update"
         run "cp #{deploy_to}/shared/database.yml #{current_path}/config/"
         run "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake db:migrate"
         run "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake assets:precompile"
