@@ -1,0 +1,23 @@
+<%= simple_form_for @burndown, :url => url_for(:action => 'burndown', :controller => 'home'), :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :computacao, :label => 'Computação' %>
+    <%= f.input :portugues, :label => 'Português' %>
+    <%= f.input :rlogico, :label => 'Raciocínio Lógico' %>
+    <%= f.input :dadmin, :label => 'Direito Administrativo' %>
+    <%= f.input :dconst, :label => 'Direito Constitucional' %>
+    <%= f.input :dias, :label => 'Qtd Dias' %>
+    <%= f.input :colors, :label => 'Color', :input_html=>{:size => 5} %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit 'Salvar', :class => 'btn' %>
+  </div>
+<% end %>
+
+  <div class='offset2' style='margin-top:25px;'>
+    Burndown Gráfico <br />
+    <%= write_burndown(@burndown, 1) %>
+    <%= image_tag( write_burndown(@burndown, 1) ) %> <br />
+  </div>

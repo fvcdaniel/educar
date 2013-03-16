@@ -22,4 +22,30 @@ module HomeHelper
 		end
 	end
 
+	def write_burndown(burndown, flag)
+		str = 'http://apps.vanpuffelen.net/charts/burndown.jsp?'
+		numbers = []
+		burndown.dias.times {|i| numbers << i+1 }
+		days = numbers.join(",")
+		str += 'days='+days
+
+		computacao = (burndown.computacao.split(",").map { |s| s.to_i })
+		portugues = (burndown.portugues.split(",").map { |s| s.to_i })
+		rlogico = (burndown.rlogico.split(",").map { |s| s.to_i })
+		dadmin = (burndown.dadmin.split(",").map { |s| s.to_i })
+		dconst = (burndown.dconst.split(",").map { |s| s.to_i })
+
+		result = computacao.zip(portugues).map {|a| a.inject(:+)}
+		result = result.zip(portugues).map {|a| a.inject(:+)}
+		result = result.zip(portugues).map {|a| a.inject(:+)}
+		result = result.zip(portugues).map {|a| a.inject(:+)}
+
+		result = result.join(",")
+
+		str += '&work='+result
+		
+		str += '&colors='+burndown.colors		
+	end
+
 end
+

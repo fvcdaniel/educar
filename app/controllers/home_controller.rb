@@ -40,6 +40,20 @@ class HomeController < ApplicationController
     end
   end
 
+  def burndown
+    if Burndown.first.blank?
+      @burndown = Burndown.new
+      @burndown.save
+    else
+      @burndown = Burndown.first
+      unless params[:burndown].blank?
+        @burndown.update_attributes(params[:burndown])
+      end  
+    end 
+
+    @burndown.save
+  end
+
   def dynamic_select_item
   	@questao = Questao.find(params[:id])
   	@gabarito = @questao.gabarito

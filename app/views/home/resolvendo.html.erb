@@ -25,11 +25,12 @@
 						<% end %>
 						
 						<div class="form-actions">
-							<input type="submit" value="Responder" name="commit" class="btn" onClick="<%= ajaxResp(questao) %>"></input>
-								<button class='btn' id='button_hide<%=questao.id%>' onClick="buttonComments(<%=questao.id%>)" >
-									<i class="icon-white icon-chevron-down"></i> 
-									Comentários
-								</button>
+							<input type="submit" value="Responder" name="commit" class="btn" onClick="<%= ajaxResp(questao) %>">
+							</input>
+							<button class='btn' id='button_hide<%=questao.id%>' onClick="buttonComments(<%=questao.id%>)" >
+								<i class="icon-white icon-chevron-down"></i> 
+								Comentários
+							</button>
 						</div>
 
 						<div id='hider<%= questao.id %>' style="display: none;">
@@ -42,7 +43,8 @@
 										<% end %>
 										<div class="comment" style="float:left;">
 											<%= image_tag 'imagem_perfil.png', :size => '46x50', :class => 'imagem_comment' %>
-											<div class="created_at"> <%= I18n.l comment.created_at, :format => :custom, :locale => 'pt-BR' %> </div>
+											<div class="created_at"> <%= I18n.l comment.created_at, :format => :custom, :locale => 'pt-BR' %> 
+											</div>
 											<div class="comment_content">
 												<%= raw comment.texto %>
 											</div>
