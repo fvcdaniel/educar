@@ -24,6 +24,9 @@ module HomeHelper
 
 	def write_burndown(burndown, flag)
 		str = 'http://apps.vanpuffelen.net/charts/burndown.jsp?'
+		if burndown.dias.blank?
+			return ""
+		end
 		numbers = []
 		burndown.dias.times {|i| numbers << i+1 }
 		days = numbers.join(",")
