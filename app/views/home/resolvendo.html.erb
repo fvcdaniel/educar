@@ -83,6 +83,7 @@
 		<%else%>
 			<p> Nenhuma questão cadastrada... </p>
 		<%end%>
+		<%= debug @questoes if Rails.env.development? %>
 
 	</div>
 </div>

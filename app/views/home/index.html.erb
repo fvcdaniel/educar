@@ -5,9 +5,7 @@
 
 		<%unless @concursos.blank? %>
 			<% @concursos.each do |concurso| %>
-				<a class="assunto concurso" href='#'> 
-					<%= concurso.nome.upcase + " - " + concurso.cargo.upcase %>
-				</a>
+				<%= link_to "#{concurso.nome.upcase + ' - ' + concurso.cargo.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => 'assunto concurso'%>
 		    <% end %>
 	    <% end %>
 
