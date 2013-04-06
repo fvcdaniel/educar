@@ -35,10 +35,10 @@ Educar::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "Educar",
-    :sender_address => %{ "Projeto Educar" <contato@aprenderconcursos.com> },
-    :exception_recipients => %w{ fvcdaniel@gmail.com }
+#  config.middleware.use ExceptionNotifier,
+#    :email_prefix => "Educar",
+#    :sender_address => %{ "Projeto Educar" <contato@aprenderconcursos.com> },
+#    :exception_recipients => %w{ fvcdaniel@gmail.com }
 
   config.action_mailer.default_url_options = { :host => 'localhost' }
 

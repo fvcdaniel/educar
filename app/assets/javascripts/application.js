@@ -16,9 +16,11 @@
 //= require_tree .
 //= require jquery-ui
 //= require autocomplete-rails
-//= require jquery.ui.all
+
 //= require jquery.modal
 
+
+//require jquery.ui.all
 
 jQuery(document).ready(function() {
 
@@ -147,7 +149,7 @@ function delete_item_temp(index){
 	return false;
 }
 
-$('#new_comment').live("ajax:complete", function(event,xhr,status){
+/* $('#new_comment').live("ajax:complete", function(event,xhr,status){
 	alert('caution');
 	$(this).children('.text').children('.controls').children('textarea').val('');
     var questao_id = $(this).children('.hidden').children('.controls').children('input').val();
@@ -158,6 +160,7 @@ $('#new_comment').live("ajax:complete", function(event,xhr,status){
 			dataType: "script"
 		});
 });
+*/
 
 function get_comments(elem){
 	vars = new Object();

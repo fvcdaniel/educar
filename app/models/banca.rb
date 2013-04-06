@@ -11,6 +11,8 @@
 class Banca < ActiveRecord::Base
   attr_accessible :nome
   has_many :concursos, :dependent => :destroy #muito cuidado com isto
+  validates_presence_of :nome
+  validates_uniqueness_of :nome
 
   def name
   	self.nome
