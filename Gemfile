@@ -20,6 +20,7 @@ gem "carrierwave"
 gem 'ancestry'
 gem 'newrelic_rpm'
 gem 'omniauth-facebook'
+gem 'fb_graph'
 
 group :development do
 end

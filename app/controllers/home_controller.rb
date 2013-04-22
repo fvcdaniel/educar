@@ -21,7 +21,12 @@ class HomeController < ApplicationController
     unless(params[:concurso_id].blank?)
     	@concurso = params[:concurso_id]
     end
-    if (@materia and @assunto and @concurso)
+    unless(params[:questao_id].blank?)
+      @questao = params[:questao_id]
+    end
+    if (@questao)
+      @questoes = Questao.where("id = ? ", @questao)
+    elsif (@materia and @assunto and @concurso)
     	@questoes = Questao.where("materia_id = ? and assunto_id = ? and concurso_id = ? ", @materia, @assunto, @concurso).order(:id)
     elsif (@materia and @assunto)
     	@questoes = Questao.where("materia_id = ? and assunto_id = ? ", @materia, @assunto).order(:id)
