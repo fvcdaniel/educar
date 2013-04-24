@@ -33,7 +33,7 @@
               <%= questao.texto.first(16).strip + '...' %> 
           </abbr> 
         </td>
-        <td>
+        <td style="width: 53px;">
           <%= link_to new_item_path(:questao => questao.id), :class => "icon-item", :title => "adicionar item" do %>
             <i class="icon-plus"></i>
           <% end %>
