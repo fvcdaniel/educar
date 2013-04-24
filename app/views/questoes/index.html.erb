@@ -29,8 +29,8 @@
         </td>
         <td><%= questao.gabarito %></td>
         <td>
-          <abbr title="<%= escape_javascript(questao.texto.strip) %>">
-              <%= questao.texto.first(16).strip + '...' %> 
+          <abbr title="<%= escape_javascript(ActionController::Base.helpers.strip_tags(questao.texto.strip).gsub('"','').squish) %>">
+              <%= ActionController::Base.helpers.strip_tags(questao.texto.strip).first(16) + '...' %> 
           </abbr> 
         </td>
         <td style="width: 53px;">
