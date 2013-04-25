@@ -39,9 +39,9 @@ module HomeHelper
 		dconst = (burndown.dconst.split(",").map { |s| s.to_i })
 
 		result = computacao.zip(portugues).map {|a| a.inject(:+)}
-		result = result.zip(portugues).map {|a| a.inject(:+)}
-		result = result.zip(portugues).map {|a| a.inject(:+)}
-		result = result.zip(portugues).map {|a| a.inject(:+)}
+		result = result.zip(rlogico).map {|a| a.inject(:+)}
+		result = result.zip(dadmin).map {|a| a.inject(:+)}
+		result = result.zip(dconst).map {|a| a.inject(:+)}
 
 		result = result.join(",")
 
