@@ -24,11 +24,13 @@
       <div class="row-fluid">
         <% unless params[:controller].to_s.include? 'devise'%>
           <div class="span3">
-            <div class="well sidebar-nav">
-              <%= render 'layouts/materias' %>
-            </div><!--/.well -->
+            <div class="span10">
+              <div class="well sidebar-nav">
+                <%= render 'layouts/materias' %>
+              </div><!--/.well -->
+            </div>
           </div><!--/span-->
-          <div class="span9">
+          <div class="span9" style="margin-left:0px;">
             <div class="<%= default_class(yield(:class)) %>">
               <%= bootstrap_flash %>
               <%= yield %>
