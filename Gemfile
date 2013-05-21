@@ -21,6 +21,7 @@ gem 'ancestry'
 gem 'newrelic_rpm'
 gem 'omniauth-facebook'
 gem 'fb_graph'
+gem 'will_paginate', '~> 3.0'
 
 group :development do
 end

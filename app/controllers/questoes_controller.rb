@@ -6,7 +6,7 @@ class QuestoesController < ApplicationController
   # GET /questoes
   # GET /questoes.json
   def index
-    @questoes = Questao.all
+    @questoes = Questao.paginate(:page => params[:page], :per_page => 30)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -33,6 +33,10 @@
   </tbody>
 </table>
 
+<div class="apple_pagination">
+  <%= will_paginate @itens %>
+</div>
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_item_path,
             :class => 'btn' %>

@@ -48,6 +48,10 @@
   </tbody>
 </table>
 
+<div class="apple_pagination">
+  <%= will_paginate @questoes %>
+</div>
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_questao_path,
             :class => 'btn' %>
