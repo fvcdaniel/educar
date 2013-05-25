@@ -1,15 +1,18 @@
 <% provide(:class, 'blank') if params[:materia_id].blank? %>
 <% unless params[:materia_id].blank? %>
-	
-	<h1><%= "#{@materia.nome.upcase} - "%>CONCURSOS</h1>
 
-		<%unless @concursos.blank? %>
-			<% @concursos.each do |concurso| %>
-				<%= link_to "#{concurso.nome.upcase + ' - ' + concurso.cargo.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => 'assunto concurso'%>
-		    <% end %>
-	    <% end %>
-
-	<h1><%= "#{@materia.nome.upcase} - "%>ASSUNTOS</h1>
+	<div style="width: 75%; margin: 0px auto;">
+		<ul class="nav nav-tabs">
+	    	<li class="<%= renderMateriaBy == "ass" ? "active" : "" %>">
+	    		<%= link_to "#{@materia.nome.upcase} - ASSUNTOS", root_path(:materia_id => params[:materia_id], :por => "ass")%>
+	    	</li>
+	    	<li class="<%= renderMateriaBy == "con" ? "active" : "" %>">
+	    		<%= link_to "#{@materia.nome.upcase} - CONCURSOS", root_path(:materia_id => params[:materia_id], :por => "con")%>
+	    	</li>
+	    </ul>
+	</div>
+	<% if renderMateriaBy == "ass" %>
+		<!-- <h1><%= "#{@materia.nome.upcase} - "%>ASSUNTOS</h1> -->
 
 	    <ul>
 	    	<% unless @assuntos.blank? %>
@@ -22,6 +25,46 @@
 			    <% end %>
 	    	<% end %>
 	    </ul>
+
+    <% end %>
+
+    <% if renderMateriaBy == "con" %>
+
+		<% unless @concursos.blank? %>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th><%= Concurso.human_attribute_name(:ano) %></th>
+			      <th> Órgão </th>
+			      <th><%= Concurso.human_attribute_name(:cargo) %></th>
+			      <th><%= Concurso.human_attribute_name(:banca) %></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @concursos.each do |concurso| %>
+			      <tr>
+			        <td>
+			        	<%= link_to "#{concurso.ano}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => ''%>
+			        </td>
+			        <td>
+			        	<%= link_to "#{concurso.nome.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => ''%>
+			        </td>
+			        <td>
+			        	<%= link_to "#{concurso.cargo.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => ''%>
+			        </td>
+			        <td>
+			        	<%= link_to "#{concurso.banca.nome.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => ''%>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+		    </table>
+		    <div class="apple_pagination">
+			  <%= will_paginate @concursos %>
+			</div>
+
+	    <% end %>
+    <% end %>
 
 <% else %>
 
