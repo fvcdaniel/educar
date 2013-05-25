@@ -2,11 +2,12 @@
 class QuestoesController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource :except => [:dynamic_select_assuntos, :dynamic_add_item]
+  helper_method :sort_column, :sort_direction
   
   # GET /questoes
   # GET /questoes.json
   def index
-    @questoes = Questao.paginate(:page => params[:page], :per_page => 30)
+    @questoes = Questao.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 30)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -135,6 +136,17 @@ class QuestoesController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+
+  private
+  
+  def sort_column
+    Questao.column_names.include?(params[:sort]) ? params[:sort] : "materia_id"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end

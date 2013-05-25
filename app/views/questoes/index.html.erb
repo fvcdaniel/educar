@@ -5,11 +5,11 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:materia_id) %></th>
-      <th><%= model_class.human_attribute_name(:concurso_id) %></th>
-      <th><%= model_class.human_attribute_name(:assunto_id) %></th>
-      <th><%= model_class.human_attribute_name(:tipo) %></th>
+      <th><%= sortable "id", model_class.human_attribute_name(:id) %></th>
+      <th><%= sortable "materia_id", model_class.human_attribute_name(:materia_id) %></th>
+      <th><%= sortable "concurso_id", model_class.human_attribute_name(:concurso_id) %></th>
+      <th><%= sortable "assunto_id", model_class.human_attribute_name(:assunto_id) %></th>
+      <th><%= sortable "tipo" %></th>
       <th><%= model_class.human_attribute_name(:gabarito) %></th>
       <th><%= model_class.human_attribute_name(:texto) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
