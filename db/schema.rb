@@ -13,6 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20130522041505) do
 
+  create_table "anomalias", :id => false, :force => true do |t|
+    t.decimal "CodTeste"
+    t.decimal "CodMateria"
+  end
+
   create_table "assuntos", :force => true do |t|
     t.string   "nome"
     t.integer  "materia_id"
@@ -101,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20130522041505) do
     t.datetime "updated_at",                   :null => false
     t.integer  "user_id"
     t.string   "nivel"
-    t.string   "spid"
+    t.integer  "spid"
   end
 
   add_index "questoes", ["assunto_id"], :name => "index_questoes_on_assunto_id"
