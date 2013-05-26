@@ -1,14 +1,16 @@
 class HomeController < ApplicationController
   def index
-  	unless(params[:materia_id].blank?)
-    	@materia = Materia.find(params[:materia_id])
-    end
-    unless(params[:materia_id].blank?)
-    	@concursos = Concurso.includes(:questoes).where("questoes.materia_id = ?",params[:materia_id]).order("ano desc").paginate(:page => params[:page], :per_page => 30)
-    	@assuntos = Assunto.where("materia_id = ? and assunto_id is null",params[:materia_id]).order(:nome)
-    else
-    	@concursos = Concurso.all(:order => :nome)
-    	@assuntos = Assunto.where(:assunto_id => nil).order(:nome).limit(100)
+    if %w[ass con].include?(params[:por])
+    	unless(params[:materia_id].blank?)
+      	@materia = Materia.find(params[:materia_id])
+      end
+      unless(params[:materia_id].blank?)
+      	@concursos = Concurso.includes(:questoes).where("questoes.materia_id = ?",params[:materia_id]).order("ano desc").paginate(:page => params[:page], :per_page => 30)
+      	@assuntos = Assunto.where("materia_id = ? and assunto_id is null",params[:materia_id]).order(:nome)
+      else
+      	@concursos = Concurso.all(:order => :nome)
+      	@assuntos = Assunto.where(:assunto_id => nil).order(:nome).limit(100)
+      end
     end
   end
   def resolvendo
