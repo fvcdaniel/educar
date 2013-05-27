@@ -6,7 +6,7 @@
   <%= f.error_notification %>
   
   <div class="form-inputs">
-	  <%= f.association :concurso, :input_html => { :style => "width: auto" } %>
+	  <%= f.association :concurso, :input_html => { :style => "width: auto" }, collection: Concurso.order('ano DESC, nome ASC, cargo ASC') %>
     <%= f.association :materia, :input_html => { :style => "width: auto" } %>
 
     <% if @questao.materia.blank? %>

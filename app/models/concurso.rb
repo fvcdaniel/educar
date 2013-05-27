@@ -27,7 +27,7 @@ class Concurso < ActiveRecord::Base
   mount_uploader :gabarito, PdfUploader
 
   def name
-  	"#{self.nome} - #{self.ano} - #{self.cargo}".upcase
+  	("#{self.ano} - #{self.nome} - #{self.cargo}".size > 70) ? "#{self.ano} - #{self.nome} - #{self.cargo}".first(70).upcase + "..." : "#{self.ano} - #{self.nome} - #{self.cargo}".upcase
   end
 
   def nome=(val)
