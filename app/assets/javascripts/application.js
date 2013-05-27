@@ -120,7 +120,7 @@ function ajaxRespM(questao){
 
 }
 
-function ajaxResp2(questao){
+function ajaxRespA(questao){
 
 	var start_time = $('#start_time').val();
 	var checked = []
