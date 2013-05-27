@@ -124,16 +124,17 @@ function ajaxRespA(questao){
 
 	var start_time = $('#start_time').val();
 	var checked = []
-	$("input[name='"+questao+"_item_questao']:checked").each(function () {
+	$("select[name='"+questao+"_item_questao']").each(function () {
     	checked.push($(this).val());
 	});
+	$.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' });
 	$.ajax({
 		type: "GET",
 		 url: window.location.protocol+"//"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+checked+"&start_time="+start_time,
 		data: questao,
 		dataType: "script"
 	});
-
+	$.unblockUI();
 }
 
 function delete_item_temp(index){

@@ -15,7 +15,7 @@ class HomeController < ApplicationController
       	@concursos = Concurso.all(:order => :nome)
       	@assuntos = Assunto.where(:assunto_id => nil).order(:nome).limit(100)
       end
-      
+
     end
 
   end
@@ -78,8 +78,7 @@ class HomeController < ApplicationController
         @resp = ''
       end
     elsif @questao.tipo == 'C'
-      @resp_tmp = params[:resp].split(',').map{|a| a.to_i}
-      @gab_tmp = (0...@questao.itens.count).to_a - @resp_tmp
+      @resp = params[:resp].split(',').map{|a| a.to_s}
     end
 
   	

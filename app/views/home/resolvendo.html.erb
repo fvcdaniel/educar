@@ -18,9 +18,14 @@
 								<% if questao.tipo == 'M' %>
 									<%= radio_button_tag "#{questao.id}_item_questao", value_item(index), false, :class => "item-radio", :style => 'margin: 0px' %>
 								<% elsif questao.tipo == 'C' %>
-									<%= check_box_tag "#{questao.id}_item_questao", index, false, :class => "item-radio", :style => 'margin: 0px' %>
+									<select style = "margin: 0px; width: auto;" name="<%="#{questao.id}_item_questao"%>">
+										<option value=" ">N/A</option>
+										<option value="C">CERTO</option>
+										<option value="E">ERRADO</option>
+									</select> 
+									
 								<% end %>
-								<%= raw item_desc(item, index) %>
+								<%= raw item_desc(item, index, questao.tipo) %>
 							</li>
 						<% end %>
 						

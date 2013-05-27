@@ -5,10 +5,10 @@ module HomeHelper
 		"<div class=\"span12\" style=\"background-color:#F9F9F9; padding-left:10px;\"> <a href=\"/home/resolvendo/?questao_id=#{questao.id}\" > #{index+1} </a> <div style=\"padding-left:25px; padding-right:20px; padding-bottom:10px; \"> #{questao.texto} </div> </div>"
 	end
 
-	def item_desc(item, index)
+	def item_desc(item, index, tipoQuestao = nil)
 		unless item.blank? and index.blank?
 			itens = ('A'..'Z').collect{|a| a}
-			"#{itens[index]} <div style=\"padding-left:45px;\"> #{item.desc} </div>"
+			((tipoQuestao == 'M') ? "#{itens[index]} " : "<br />") + " <div style=\"padding-left:45px;\"> #{item.desc} </div>"
 		else
 			"não foi possível identificar a descrição do item"
 		end
