@@ -69,7 +69,7 @@ Educar::Application.configure do
 
   # For a full list of configurable options, see the gem's GitHub home page.
   config.middleware.use ExceptionNotifier,
-    :email_prefix => "Educar",
+    :email_prefix => "Aprender Concursos",
     :sender_address => %{ "Projeto Educar" <contato@aprenderconcursos.com> },
     :exception_recipients => %w{ fvcdaniel@gmail.com }
 

@@ -52,7 +52,7 @@
 			        	<%= link_to "#{concurso.cargo.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => ''%>
 			        </td>
 			        <td>
-			        	<%= link_to "#{concurso.banca.nome.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => ''%>
+			        	<%= link_to (concurso.banca.blank?) ? "" : "#{concurso.banca.nome.upcase}", home_resolvendo_path(:materia_id => @materia.id, :concurso_id => concurso.id), :class => ''%>
 			        </td>
 			      </tr>
 			    <% end %>
