@@ -1,16 +1,19 @@
 <% provide(:class, 'blank') if params[:materia_id].blank? %>
 <% unless params[:materia_id].blank? %>
 
-	<div style="width: 75%; margin: 0px auto;">
-		<ul class="nav nav-tabs">
-	    	<li class="<%= renderMateriaBy == "ass" ? "active" : "" %>">
-	    		<%= link_to "#{@materia.nome.upcase} - ASSUNTOS", root_path(:materia_id => params[:materia_id], :por => "ass")%>
+	<h1 style="text-align:center;"><%= "#{@materia.nome.upcase}" %> </h1>
+
+	<div class="wrapper">
+	    <ul class="nav nav-tabs">
+	        <li class="<%= renderMateriaBy == "ass" ? "active" : "" %>">
+	    		<%= link_to "POR ASSUNTOS", root_path(:materia_id => params[:materia_id], :por => "ass")%>
 	    	</li>
 	    	<li class="<%= renderMateriaBy == "con" ? "active" : "" %>">
-	    		<%= link_to "#{@materia.nome.upcase} - CONCURSOS", root_path(:materia_id => params[:materia_id], :por => "con")%>
+	    		<%= link_to "POR CONCURSOS", root_path(:materia_id => params[:materia_id], :por => "con")%>
 	    	</li>
 	    </ul>
 	</div>
+	
 	<% if renderMateriaBy == "ass" %>
 
 	    <ul>
