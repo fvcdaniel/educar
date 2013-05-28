@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522041505) do
+ActiveRecord::Schema.define(:version => 20130527233315) do
 
   create_table "anomalias", :id => false, :force => true do |t|
     t.decimal "CodTeste"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130522041505) do
     t.string   "imagem"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "active"
   end
 
   create_table "orgaos", :force => true do |t|
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20130522041505) do
     t.integer  "user_id"
     t.string   "nivel"
     t.integer  "spid"
+    t.string   "esfera"
   end
 
   add_index "questoes", ["assunto_id"], :name => "index_questoes_on_assunto_id"

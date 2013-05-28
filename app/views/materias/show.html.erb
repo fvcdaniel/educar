@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <b>Nome:</b>
@@ -10,6 +9,10 @@
   <%= @materia.imagem %>
 </p>
 
+<p>
+  <b>Ativo:</b>
+  <%= @materia.active ? 'Ativo' : 'Inativo' %>
+</p>
 
 <%= link_to 'Editar', edit_materia_path(@materia) %> |
 <%= link_to 'Voltar', materias_path %>

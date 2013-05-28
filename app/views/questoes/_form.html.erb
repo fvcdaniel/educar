@@ -6,7 +6,7 @@
   <%= f.error_notification %>
   
   <div class="form-inputs">
-	  <%= f.association :concurso, :input_html => { :style => "width: auto" }, collection: Concurso.order('ano DESC, nome ASC, cargo ASC') %>
+	  <%= f.association :concurso, :input_html => { :style => "width: auto" }, collection: Concurso.ordered %>
     <%= f.association :materia, :input_html => { :style => "width: auto" } %>
 
     <% if @questao.materia.blank? %>
@@ -17,7 +17,7 @@
 
     <%= f.input :tipo, :collection => [['Múltipla Escolha', 'M'], ['Certa / Errada', 'C']], :include_blank => false %>
 	  
-    <%= f.input :gabarito, :input_html => { :style => "width: 100px;" }, :hint => 'CCEE para questões de certo/errado e A,B,C,D ou E para multipla escolha...' %>
+    <%= f.input :gabarito, :input_html => { :style => "width: 100px;" }, :hint => 'CCEE para questões de certo/errado e A,B,C,D ou E para múltipla escolha...' %>
 
 	  <%= f.input :texto, :as => :text, :input_html => {:rows => 8, :cols => 80, :class => 'tinymce' }, :hint => 'coloque aqui a pergunta...' %>
 

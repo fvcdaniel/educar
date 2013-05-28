@@ -1,11 +1,11 @@
 <ul class="nav nav-list">
   <li class="nav-header">Materias</li>
-  <% @materias.each do |m|%>
+  <% @materiasHome.each do |m|%>
   	<li class="<%= materia_active m.id%>">
   		<%= link_to m.nome.titleize, root_path(:materia_id => m.id)%>
   	</li>
   <% end %>
-  <% if @materias.blank? %>
+  <% if @materiasHome.blank? %>
   	<li class="active"><a href="#">Não há cadastro</a></li>
   <% end %>
   

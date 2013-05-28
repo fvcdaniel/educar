@@ -229,6 +229,7 @@ pt-BR:
       item: 'Item'
       assunto: 'Assunto'
       comment: 'Comentário'
+      materia: 'Matéria'
     attributes:
       questao:
         materia: 'Matéria'
@@ -237,5 +238,7 @@ pt-BR:
         questao: 'Questão'
       assunto:
         materia: 'Matéria'
+      materia:
+        active: 'Ativo'
     errors:
       <<: *errors

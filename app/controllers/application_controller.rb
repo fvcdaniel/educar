@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
 
   private
   def set_var
-    @materias ||= Materia.all(:order => :nome)
-    @assuntos = Assunto.all
+    @materiasHome ||= Materia.where(:active => true).order('nome ASC')
   end
 
+=begin
   around_filter :you_dont_have_bloody_clue
 
   protected
@@ -38,6 +38,6 @@ class ApplicationController < ActionController::Base
     end
 
   end
-
+=end
   
 end

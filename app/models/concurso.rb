@@ -22,6 +22,8 @@ class Concurso < ActiveRecord::Base
   has_many :questoes, :dependent => :destroy
   belongs_to :banca
 
+  scope :ordered, order('ano DESC, nome ASC, cargo ASC')
+
   mount_uploader :edital, PdfUploader
   mount_uploader :prova, PdfUploader
   mount_uploader :gabarito, PdfUploader

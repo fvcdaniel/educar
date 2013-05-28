@@ -8,6 +8,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:imagem) %></th>
+      <th><%= model_class.human_attribute_name(:active) %></th>
       <th><%=t '.actions', :default => 'Ações' %></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= materia.nome.titleize %></td>
         <td><%= materia.imagem %></td>
+        <td><%= materia.active ? 'Ativo' : 'Inativo' %></td>
         <td>
           <%= link_to image_tag('edit.png'), edit_materia_path(materia), :class => 'quick-edit',:title => 'editar' %>
           <%= link_to image_tag('delete.png'), materia_path(materia), :method => :delete,
