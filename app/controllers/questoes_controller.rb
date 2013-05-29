@@ -41,7 +41,7 @@ class QuestoesController < ApplicationController
   # GET /questoes/1/edit
   def edit
     @questao = Questao.find(params[:id])
-    session['questao_itens'] = @questao.itens.collect{|i| i.desc}
+    session['questao_itens'] = @questao.itens.order(:id).collect{|i| i.desc}
   end
 
   # POST /questoes
