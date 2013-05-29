@@ -113,8 +113,8 @@ class QuestoesController < ApplicationController
     unless params['questao_id'].blank?
       @questao = Questao.find(params['questao_id'].to_i)
       unless params['op'].blank?  
-        unless @questao.itens[params['item_index'].to_i].blank?
-          @questao.itens.delete @questao.itens[params['item_index'].to_i]
+        unless @questao.itens.order(:id)[params['item_index'].to_i].blank?
+          @questao.itens.delete @questao.itens.order(:id)[params['item_index'].to_i]
           @questao.save
         end
       end
