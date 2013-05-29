@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
@@ -19,16 +20,13 @@
 
 //= require jquery.modal
 
-
-//require jquery.ui.all
-
 jQuery(document).ready(function() {
 
 	$("input[name='item_questao']").change(function(){
 		
 		var data1 = $('#questao_id').val();
 		var data2 = $("input[name='item_questao']:checked").val();
-		$.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' });
+
 		$.ajax({
 			type: "GET",
 			 url: window.location.protocol+"//"+location.host+"/home/dynamic_select_item/"+data1+"?resp="+data2,
