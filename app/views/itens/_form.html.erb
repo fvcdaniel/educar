@@ -2,7 +2,7 @@
   <%= f.error_notification %>
   
   <div class="form-inputs">
-	  <%= f.association :questao %>
+	  <%= f.association :questao, collection: [@item.questao] %>
     <%= f.input :desc, :as => :text, :input_html => {:rows => 8, :cols => 80 }  %>
   </div>
 
