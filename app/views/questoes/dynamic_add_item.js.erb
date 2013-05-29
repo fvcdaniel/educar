@@ -12,8 +12,8 @@ var html = '';
 	html += '<a onClick="javascript:delete_item_temp(<%= index %>); " href="javascript:void(0)"> '
 	html += '<i style="float:left; margin-right:5px;" class="icon-remove"></i></a> '
 	<% unless @questao.blank? %>
-	<% unless @questao.itens[index].blank? %>
-	  html += '<a href="<%= edit_item_path(@questao.itens[index].id)%>"> '
+	<% unless @questao.itens.order(:id)[index].blank? %>
+	  html += '<a href="<%= edit_item_path(@questao.itens.order(:id)[index].id)%>"> '
 	  	html += '<i style="float:left; margin-right:5px;" class="icon-edit"></i> '
       html += '</a> '
     <% end %>
