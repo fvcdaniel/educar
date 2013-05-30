@@ -34,23 +34,23 @@ class HomeController < ApplicationController
       @questao = params[:questao_id]
     end
     if (@questao)
-      @questoes = Questao.where("id = ? ", @questao)
+      @questoes = Questao.where("id = ? ", @questao).paginate(:page => params[:page], :per_page => 10)
     elsif (@materia and @assunto and @concurso)
-    	@questoes = Questao.where("materia_id = ? and assunto_id = ? and concurso_id = ? ", @materia, @assunto, @concurso).order(:id)
+    	@questoes = Questao.where("materia_id = ? and assunto_id = ? and concurso_id = ? ", @materia, @assunto, @concurso).order(:id).paginate(:page => params[:page], :per_page => 10)
     elsif (@materia and @assunto)
-    	@questoes = Questao.where("materia_id = ? and assunto_id = ? ", @materia, @assunto).order(:id)
+    	@questoes = Questao.where("materia_id = ? and assunto_id = ? ", @materia, @assunto).order(:id).paginate(:page => params[:page], :per_page => 10)
     elsif (@materia and @concurso)
-    	@questoes = Questao.where("materia_id = ? and concurso_id = ? ", @materia, @concurso).order(:id)
+    	@questoes = Questao.where("materia_id = ? and concurso_id = ? ", @materia, @concurso).order(:id).paginate(:page => params[:page], :per_page => 10)
     elsif (@assunto and @concurso)
-    	@questoes = Questao.where("assunto_id = ? and concurso_id = ? ", @assunto, @concurso).order(:id)
+    	@questoes = Questao.where("assunto_id = ? and concurso_id = ? ", @assunto, @concurso).order(:id).paginate(:page => params[:page], :per_page => 10)
     elsif (@materia)
-    	@questoes = Questao.where("materia_id = ? ", @materia).order(:id)
+    	@questoes = Questao.where("materia_id = ? ", @materia).order(:id).paginate(:page => params[:page], :per_page => 10)
     elsif (@assunto)
-    	@questoes = Questao.where("assunto_id = ? ", @assunto).order(:id)
+    	@questoes = Questao.where("assunto_id = ? ", @assunto).order(:id).paginate(:page => params[:page], :per_page => 10)
     elsif (@concurso)
-    	@questoes = Questao.where("concurso_id = ? ", @concurso).order(:id)
+    	@questoes = Questao.where("concurso_id = ? ", @concurso).order(:id).paginate(:page => params[:page], :per_page => 10)
     else
-    	@questoes = Questao.first(100)
+    	@questoes = Questao.first(100).paginate(:page => params[:page], :per_page => 10)
     end
   end
 
