@@ -117,14 +117,22 @@ function ajaxRespM(questao){
 	var str_data = "input[name='"+questao+"_item_questao']:checked"
 	var data = $(str_data).val();
 	
-	$.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' });
-	$.ajax({
+	//$.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' });
+	request = $.ajax({
+		beforeSend: $.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' }),
 		type: "GET",
 		 url: window.location.protocol+"//"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+data+"&start_time="+start_time,
 		data: questao,
 		dataType: "script"
 	});
-	$.unblockUI();
+	request.done(function( msg ) {
+		//alert( "Data Saved: " + msg );
+		$.unblockUI();
+	});
+	request.fail(function(jqXHR, textStatus) {
+		$.unblockUI();
+		alert( "Requisição falhou: " + textStatus );
+	});
 
 }
 
@@ -135,14 +143,23 @@ function ajaxRespA(questao){
 	$("select[name='"+questao+"_item_questao']").each(function () {
     	checked.push($(this).val());
 	});
-	$.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' });
-	$.ajax({
+	//$.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' });
+	request = $.ajax({
+		beforeSend: $.blockUI({ message: '<h1><img src="/assets/busy.gif" /> Só um momento...</h1>' }),
 		type: "GET",
 		 url: window.location.protocol+"//"+location.host+"/home/dynamic_select_item/"+questao+"?resp="+checked+"&start_time="+start_time,
 		data: questao,
 		dataType: "script"
 	});
-	$.unblockUI();
+	
+	request.done(function( msg ) {
+		//alert( "Data Saved: " + msg );
+		$.unblockUI();
+	});
+	request.fail(function(jqXHR, textStatus) {
+		$.unblockUI();
+		alert( "Requisição falhou: " + textStatus );
+	});
 }
 
 function delete_item_temp(index){
